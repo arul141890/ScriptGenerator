@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C356CEEF-E882-4382-9E23-648A029B969D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessModule</RootNamespace>
+    <AssemblyName>DataAccessModule</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\AppModel.cs" />
+    <Compile Include="Core\AppSchemaProvider.cs" />
+    <Compile Include="Core\AuditTrail.cs" />
+    <Compile Include="Core\CustomMapper.cs" />
+    <Compile Include="Core\Petapoco\PetaPoco4.cs" />
+    <Compile Include="Core\Petapoco\PetaPocoExtentions.cs" />
+    <Compile Include="Core\Repository.cs" />
+    <Compile Include="Core\DatabaseIntializer.cs" />
+    <Compile Include="Data\Filtering\ConditionType.cs" />
+    <Compile Include="Data\Filtering\Filters.cs" />
+    <Compile Include="Data\Filtering\FilterType.cs" />
+    <Compile Include="Data\Filtering\Helper.cs" />
+    <Compile Include="Data\Filtering\TypeFilters.cs" />
+    <Compile Include="Data\Repositories\IPagedList.cs" />
+    <Compile Include="Data\Repositories\IRepository.cs" />
+    <Compile Include="Data\Sorting\SortOptions.cs" />
+    <Compile Include="Data\Sorting\TypeSortOptions.cs" />
+    <Compile Include="Data\SqlAndValues.cs" />
+    <Compile Include="Data\Tables\Field.cs" />
+    <Compile Include="Data\Tables\ISchemaProvider.cs" />
+    <Compile Include="Data\Tables\Schema.cs" />
+    <Compile Include="Data\Tables\TypeFields.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonUtilitiesModule\CommonUtilitiesModule.csproj">
+      <Project>{a8ac6e23-a36b-4bf9-9458-bcf6ce653054}</Project>
+      <Name>CommonUtilitiesModule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
