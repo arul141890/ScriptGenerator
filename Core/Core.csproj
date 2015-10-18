@@ -39,8 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Domain\BaseModel.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\General Modules\CommonUtilitiesModule\CommonUtilitiesModule.csproj">
+      <Project>{a8ac6e23-a36b-4bf9-9458-bcf6ce653054}</Project>
+      <Name>CommonUtilitiesModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -39,8 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{594754a5-25f4-4dfe-ad94-39586b513d65}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{f32d3748-796c-45e2-b553-60ee0721abee}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\General Modules\DataAccessModule\DataAccessModule.csproj">
+      <Project>{c356ceef-e882-4382-9e23-648a029b969d}</Project>
+      <Name>DataAccessModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

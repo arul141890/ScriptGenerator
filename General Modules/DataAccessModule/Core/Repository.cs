@@ -11,9 +11,7 @@ namespace DataAccessModule.Core
 {
     using System;
     using System.Collections.Generic;
-
-    using CommonUtilitiesModule.Logging;
-
+    
     using DataAccessModule.Data.Filtering;
     using DataAccessModule.Data.Repositories;
     using DataAccessModule.Data.Sorting;
@@ -23,11 +21,7 @@ namespace DataAccessModule.Core
 
     public class Repository : IRepository
     {
-
-        private static readonly ILogger Logger = new Logger(typeof(Repository));
-
-
-
+        
         private readonly Database _db = new Database("ConnectionString");
 
 

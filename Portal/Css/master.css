@@ -1,0 +1,35 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin: 5px;
+    padding: 5px;
+}
+
+.errormessage {
+    color: #CC0000;
+    font-family: Tahoma;
+    font-size: small;
+    font-weight: bold;
+}
+
+.gridview th {
+    background-color: #00CCFF;
+    border: 1px solid black;
+    padding: 3px 2px;
+}
+
+.gridview tr td { padding: 3px 2px; }
+
+.prompt {
+    color: #666666;
+    font-family: Tahoma;
+    font-name: Tahoma;
+    font-size: small;
+    font-weight: bold;
+    padding-top: 0px;
+}
+
+.table-nonfluid { width: auto; }
