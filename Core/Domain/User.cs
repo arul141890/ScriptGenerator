@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Domain
 {
-    public class User
+    public class User : BaseModel
     {
         public string Email { get; set; }
 

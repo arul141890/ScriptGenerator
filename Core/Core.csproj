@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Domain\BaseModel.cs" />
     <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\VirtualSwitchCreation.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -62,6 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\ActiveDirectory\VirtualSwitchCreations.aspx" />
     <Content Include="App\SignOut.aspx" />
     <Content Include="Css\anytime.css" />
     <Content Include="Css\bootstrap-responsive.css" />
@@ -97,6 +98,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\ActiveDirectory\VirtualSwitchCreations.aspx.cs">
+      <DependentUpon>VirtualSwitchCreations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\ActiveDirectory\VirtualSwitchCreations.aspx.designer.cs">
+      <DependentUpon>VirtualSwitchCreations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\DataSources\GenericDataSource.cs" />
     <Compile Include="App\SignOut.aspx.cs">
       <DependentUpon>SignOut.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
