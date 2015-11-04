@@ -39,13 +39,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Activedirectory\Adinstallation.cs" />
     <Compile Include="Domain\BaseModel.cs" />
+    <Compile Include="Domain\dhcp\Scopecreation.cs" />
+    <Compile Include="Domain\dhcp\Dhcpinstallation.cs" />
     <Compile Include="Domain\User.cs" />
-    <Compile Include="Domain\VirtualSwitchCreation.cs" />
+    <Compile Include="Domain\Hyperv\VirtualDiskCreation.cs" />
+    <Compile Include="Domain\Hyperv\VMCreation.cs" />
+    <Compile Include="Domain\Hyperv\VirtualSwitchCreation.cs" />
+    <Compile Include="Domain\Webserver\Websitecreation.cs" />
+    <Compile Include="Domain\Webserver\Webserverinstallation.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Domain\dns\" />
+    <Folder Include="Domain\Filestorage\" />
+    <Folder Include="Domain\Remotedesktopservices\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\General Modules\CommonUtilitiesModule\CommonUtilitiesModule.csproj">
       <Project>{a8ac6e23-a36b-4bf9-9458-bcf6ce653054}</Project>
