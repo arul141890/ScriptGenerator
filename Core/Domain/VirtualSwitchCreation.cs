@@ -6,7 +6,7 @@
 
         public string PhysicalAdapter { get; set; }
 
-        public string AllowManagementOS { get; set; }
+        public string AllowManagementOs { get; set; }
 
     }
 }

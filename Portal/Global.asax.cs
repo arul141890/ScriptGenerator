@@ -12,7 +12,7 @@ namespace Portal
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            
+            StructureMapBootstrap.Configure();
         }
 
         protected void Session_Start(object sender, EventArgs e)

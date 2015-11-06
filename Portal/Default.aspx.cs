@@ -6,22 +6,26 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CommonUtilitiesModule;
-using Core.Interfaces;
+using Portal.App.Common;
 using Services;
+using Sevices.Users;
+using StructureMap.Attributes;
 
 
 namespace Portal
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Default : BasePage
     {
-        public IUserService userService { get; set; }
+        [SetterProperty]
+        public IUserService UserService { get; set; }
     
         private const string DefaultUrl = "App/Metadata.aspx";
 
         public Default()
         {
-            userService = new UserService();
+            
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -45,7 +49,7 @@ namespace Portal
             }
             else
             {
-                if (userService.AuthenticateUser(txtUserId.Text, txtPassword.Text.Md5()))
+                if (UserService.AuthenticateUser(txtUserId.Text, txtPassword.Text.Md5()))
                 {
                     FormsAuthentication.SetAuthCookie(txtUserId.Text, true);
                     var returnUrl = Request.QueryString["ReturnUrl"];
