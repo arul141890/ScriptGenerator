@@ -7,54 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal {
+namespace Portal.App.HyperV {
     
     
-    public partial class Site {
+    public partial class VirtualSwitchCreations {
         
         /// <summary>
-        /// Head1 control.
+        /// pnlFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        protected global::Portal.App.WebControls.GridViewExFilterPanel pnlFilter;
         
         /// <summary>
-        /// head control.
+        /// lblCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Label lblCount;
         
         /// <summary>
-        /// mnuHyperV control.
+        /// btnExport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuHyperV;
+        protected global::System.Web.UI.WebControls.Button btnExport;
         
         /// <summary>
-        /// form1 control.
+        /// gvData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::Portal.App.WebControls.GridViewEx gvData;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// dsData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::Portal.App.WebControls.ObjectDataSourceEx dsData;
     }
 }

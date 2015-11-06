@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Dynamic;
 using System.Web;
 using Core.Domain;
+using Core.Domain.Hyperv;
 using StructureMap;
 using StructureMap.Attributes;
 using Sevices;

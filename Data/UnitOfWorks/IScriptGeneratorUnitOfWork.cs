@@ -9,6 +9,7 @@
 
 using Core.Data;
 using Core.Domain;
+using Core.Domain.Hyperv;
 
 namespace Data.UnitOfWorks
 {

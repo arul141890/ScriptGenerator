@@ -1,4 +1,4 @@
-﻿namespace Core.Domain
+﻿namespace Core.Domain.Webserver
 {
     public class Websitecreation : BaseModel
     {

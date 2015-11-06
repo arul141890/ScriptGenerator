@@ -71,10 +71,9 @@
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Domain\Activedirectory\Adinstallation.cs" />
     <Compile Include="Domain\BaseModel.cs" />
-    <Compile Include="Domain\dhcp\Scopecreation.cs" />
-    <Compile Include="Domain\dhcp\Dhcpinstallation.cs" />
+    <Compile Include="Domain\Dhcp\Scopecreation.cs" />
+    <Compile Include="Domain\Dhcp\Dhcpinstallation.cs" />
     <Compile Include="Domain\User.cs" />
-    <Compile Include="Domain\VirtualSwitchCreation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,11 +84,9 @@
     <Compile Include="Domain\Hyperv\VirtualSwitchCreation.cs" />
     <Compile Include="Domain\Webserver\Websitecreation.cs" />
     <Compile Include="Domain\Webserver\Webserverinstallation.cs" />
-    <Compile Include="Interfaces\IUserService.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\dns\" />
+    <Folder Include="Domain\Dns\" />
     <Folder Include="Domain\Filestorage\" />
     <Folder Include="Domain\Remotedesktopservices\" />
   </ItemGroup>

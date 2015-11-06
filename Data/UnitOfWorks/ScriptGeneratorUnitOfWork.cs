@@ -11,6 +11,7 @@ using System;
 using System.Collections;
 using Core.Data;
 using Core.Domain;
+using Core.Domain.Hyperv;
 using Data.Repositories;
 
 namespace Data.UnitOfWorks

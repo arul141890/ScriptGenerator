@@ -1,4 +1,4 @@
-﻿namespace Core.Domain
+﻿namespace Core.Domain.Hyperv
 {
     public class VirtualDiskCreation : BaseModel
     {

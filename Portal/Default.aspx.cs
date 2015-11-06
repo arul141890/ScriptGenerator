@@ -18,8 +18,8 @@ namespace Portal
     {
         [SetterProperty]
         public IUserService UserService { get; set; }
-    
-        private const string DefaultUrl = "App/Metadata.aspx";
+
+        private const string DefaultUrl = "App/HyperV/VirtualSwitchCreations.aspx";
 
         public Default()
         {
