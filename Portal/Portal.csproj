@@ -95,9 +95,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\HyperV\AddVirtualSwitchCreation.aspx" />
     <Content Include="App\HyperV\VirtualSwitchCreations.aspx" />
     <Content Include="App\SignOut.aspx" />
     <Content Include="Css\anytime.css" />
+    <Content Include="Css\app.css" />
     <Content Include="Css\bootstrap-responsive.css" />
     <Content Include="Css\bootstrap.css" />
     <Content Include="Css\datepicker.css" />
@@ -131,8 +133,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\HyperV\AddVirtualSwitchCreation.aspx.cs">
+      <DependentUpon>AddVirtualSwitchCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\HyperV\AddVirtualSwitchCreation.aspx.designer.cs">
+      <DependentUpon>AddVirtualSwitchCreation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\HyperV\VirtualSwitchCreations.aspx.cs">
       <DependentUpon>VirtualSwitchCreations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App\HyperV\VirtualSwitchCreations.aspx.designer.cs">
       <DependentUpon>VirtualSwitchCreations.aspx</DependentUpon>

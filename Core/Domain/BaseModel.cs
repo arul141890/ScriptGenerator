@@ -24,5 +24,7 @@ namespace Core.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        public string CreatedBy { get; set; }
+
     }
 }

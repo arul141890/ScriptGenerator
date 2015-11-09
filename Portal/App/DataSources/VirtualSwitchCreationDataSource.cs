@@ -105,5 +105,10 @@ namespace Portal.App.DataSources
             }
             return logs.Count();
         }
+
+        public virtual void Delete(VirtualSwitchCreation entity)
+        {
+            this.Service.Delete(entity);
+        }
     }
 }

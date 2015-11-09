@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HyperV\IVirtualSwitchCreationService.cs" />
+    <Compile Include="HyperV\VirtualSwitchCreationService.cs" />
     <Compile Include="IScriptGeneratorService.cs" />
     <Compile Include="ScriptGeneratorService.cs" />
     <Compile Include="Users\IUserService.cs" />

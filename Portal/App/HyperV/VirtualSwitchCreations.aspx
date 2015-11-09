@@ -13,6 +13,9 @@
             <li>
                 <a class="back" href="<%= this.ResolveClientUrl("~/Default.aspx") %>">&lt; Back to dashboard</a>
             </li>
+            <li>
+                <a class="command" href="<%= this.ResolveClientUrl("~/App/HyperV/AddVirtualSwitchCreation.aspx") %>">Add new Virtual switch</a>
+            </li>
         </ul>
     </div>
     <div>
@@ -25,12 +28,12 @@
             <ul>
                 <li><span>Total no. of rows returned:&nbsp;</span>
                     <asp:Label ID="lblCount" runat="server"></asp:Label>
-                    <asp:Button ID="btnExport" runat="server" CssClass="command" OnClick="btnExport_Click" Text="Export" />
+                    <%--<asp:Button ID="btnExport" runat="server" CssClass="command" OnClick="btnExport_Click" Text="Export" />--%>
                 </li>
             </ul>
         </div>
         <div class="s-gridview-container">
-            <asp:GridViewEx runat="server" ID="gvData" DataSourceID="dsData" OnDataBound="gvData_DataBound" />
+            <asp:GridViewEx runat="server" ID="gvData" DataSourceID="dsData" />
         </div>
 
         <asp:ObjectDataSourceEx runat="server" ID="dsData">

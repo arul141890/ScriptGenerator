@@ -20,11 +20,13 @@ namespace Portal.App.HyperV
             this.dsData.SelectParameters.Add("startDate", "");
             this.dsData.SelectParameters.Add("endDate", "");
 
-            this.gvData.EnableEdit = false;
-            this.gvData.EnableDelete = false;
 
             this.gvData.DataKeyNames = new[] { "Id" };
             this.gvData.Sort("Id", SortDirection.Descending);
+
+            // set edit button
+            this.gvData.EditButtonUrlFields = "Id";
+            this.gvData.EditButtonUrlFormatString = "/App/HyperV/AddVirtualSwitchCreation.aspx?vscId={0}";
 
             this.gvData.GenerateColumns();
 
