@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -95,9 +96,45 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Activedirectory\AddAddingrodc.aspx" />
+    <Content Include="App\Activedirectory\AddAddingdc.aspx" />
+    <Content Include="App\Activedirectory\AddForestCreation.aspx" />
+    <Content Include="App\Activedirectory\ForestCreation.aspx" />
+    <Content Include="App\Activedirectory\Addingrodc.aspx" />
+    <Content Include="App\Activedirectory\Addingdc.aspx" />
+    <Content Include="App\Dhcp\AddDnsrecordcreation.aspx" />
+    <Content Include="App\Dhcp\AddDnsinstallation.aspx" />
+    <Content Include="App\Dhcp\Scopecreation.aspx" />
+    <Content Include="App\Dhcp\Dhcpinstallation.aspx" />
+    <Content Include="App\Dns\AddDnsrecordcreation.aspx" />
+    <Content Include="App\Dns\AddDnsinstallation.aspx" />
+    <Content Include="App\Dns\Dnsrecordcreation.aspx" />
+    <Content Include="App\Dns\Dnsinstallation.aspx" />
+    <Content Include="App\Filestorage\AddSmbsharecreation.aspx" />
+    <Content Include="App\Filestorage\AddNamespacecreation.aspx" />
+    <Content Include="App\Filestorage\AddRoleinstallation.aspx" />
+    <Content Include="App\Filestorage\Roleinstallation.aspx" />
+    <Content Include="App\Filestorage\Namespacecreation.aspx" />
+    <Content Include="App\Filestorage\Smbsharecreation.aspx" />
+    <Content Include="App\HyperV\AddHypervinstallation.aspx" />
+    <Content Include="App\HyperV\AddVirtualDiskCreation.aspx" />
+    <Content Include="App\HyperV\AddVMCreation.aspx" />
     <Content Include="App\HyperV\AddVirtualSwitchCreation.aspx" />
+    <Content Include="App\HyperV\VMCreation.aspx" />
+    <Content Include="App\HyperV\VirtualDiskCreation.aspx" />
+    <Content Include="App\HyperV\Hypervinstallation.aspx" />
     <Content Include="App\HyperV\VirtualSwitchCreations.aspx" />
+    <Content Include="App\Remotedesktopservices\AddRdsinstallation.aspx" />
+    <Content Include="App\Remotedesktopservices\AddCollectioncreation.aspx" />
+    <Content Include="App\Remotedesktopservices\AddApppublish.aspx" />
+    <Content Include="App\Remotedesktopservices\Apppublish.aspx" />
+    <Content Include="App\Remotedesktopservices\Collectioncreation.aspx" />
+    <Content Include="App\Remotedesktopservices\Rdsinstallation.aspx" />
     <Content Include="App\SignOut.aspx" />
+    <Content Include="App\Webserver\AddWebsitecreation.aspx" />
+    <Content Include="App\Webserver\AddWebserverinstallation.aspx" />
+    <Content Include="App\Webserver\Webserverinstallation.aspx" />
+    <Content Include="App\Webserver\Websitecreation.aspx" />
     <Content Include="Css\anytime.css" />
     <Content Include="Css\app.css" />
     <Content Include="Css\bootstrap-responsive.css" />
@@ -109,6 +146,15 @@
     <Content Include="Css\reset-min.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Robo1.JPG">
+      <BrowseToURL>~/images/Robo1.jpg</BrowseToURL>
+    </Content>
+    <Content Include="Images\Robo2.JPG" />
+    <Content Include="Images\Robo3.JPG" />
+    <Content Include="Images\Robo4.JPG" />
+    <Content Include="Images\Robo5.JPG" />
+    <Content Include="Images\Robo6.JPG" />
+    <Content Include="Images\Robo7.JPG" />
     <Content Include="js\anytime.js" />
     <Content Include="js\application.js" />
     <Content Include="js\bootstrap-affix.js" />
@@ -133,12 +179,195 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Activedirectory\AddAddingrodc.aspx.cs">
+      <DependentUpon>AddAddingrodc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Activedirectory\AddAddingrodc.aspx.designer.cs">
+      <DependentUpon>AddAddingrodc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Activedirectory\AddAddingdc.aspx.cs">
+      <DependentUpon>AddAddingdc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Activedirectory\AddAddingdc.aspx.designer.cs">
+      <DependentUpon>AddAddingdc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Activedirectory\AddForestCreation.aspx.cs">
+      <DependentUpon>AddForestCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Activedirectory\AddForestCreation.aspx.designer.cs">
+      <DependentUpon>AddForestCreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Activedirectory\ForestCreation.aspx.cs">
+      <DependentUpon>ForestCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Activedirectory\ForestCreation.aspx.designer.cs">
+      <DependentUpon>ForestCreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Activedirectory\Addingrodc.aspx.cs">
+      <DependentUpon>Addingrodc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Activedirectory\Addingrodc.aspx.designer.cs">
+      <DependentUpon>Addingrodc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Activedirectory\Addingdc.aspx.cs">
+      <DependentUpon>Addingdc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Activedirectory\Addingdc.aspx.designer.cs">
+      <DependentUpon>Addingdc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\DataSources\ForestCreationDataSource.cs" />
+    <Compile Include="App\Dhcp\AddDnsrecordcreation.aspx.cs">
+      <DependentUpon>AddDnsrecordcreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Dhcp\AddDnsrecordcreation.aspx.designer.cs">
+      <DependentUpon>AddDnsrecordcreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dhcp\AddDnsinstallation.aspx.cs">
+      <DependentUpon>AddDnsinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Dhcp\AddDnsinstallation.aspx.designer.cs">
+      <DependentUpon>AddDnsinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dhcp\Scopecreation.aspx.cs">
+      <DependentUpon>Scopecreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Dhcp\Scopecreation.aspx.designer.cs">
+      <DependentUpon>Scopecreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dhcp\Dhcpinstallation.aspx.cs">
+      <DependentUpon>Dhcpinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Dhcp\Dhcpinstallation.aspx.designer.cs">
+      <DependentUpon>Dhcpinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dns\AddDnsrecordcreation.aspx.cs">
+      <DependentUpon>AddDnsrecordcreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Dns\AddDnsrecordcreation.aspx.designer.cs">
+      <DependentUpon>AddDnsrecordcreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dns\AddDnsinstallation.aspx.cs">
+      <DependentUpon>AddDnsinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Dns\AddDnsinstallation.aspx.designer.cs">
+      <DependentUpon>AddDnsinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dns\Dnsrecordcreation.aspx.cs">
+      <DependentUpon>Dnsrecordcreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Dns\Dnsrecordcreation.aspx.designer.cs">
+      <DependentUpon>Dnsrecordcreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dns\Dnsinstallation.aspx.cs">
+      <DependentUpon>Dnsinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Dns\Dnsinstallation.aspx.designer.cs">
+      <DependentUpon>Dnsinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Filestorage\AddSmbsharecreation.aspx.cs">
+      <DependentUpon>AddSmbsharecreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Filestorage\AddSmbsharecreation.aspx.designer.cs">
+      <DependentUpon>AddSmbsharecreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Filestorage\AddNamespacecreation.aspx.cs">
+      <DependentUpon>AddNamespacecreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Filestorage\AddNamespacecreation.aspx.designer.cs">
+      <DependentUpon>AddNamespacecreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Filestorage\AddRoleinstallation.aspx.cs">
+      <DependentUpon>AddRoleinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Filestorage\AddRoleinstallation.aspx.designer.cs">
+      <DependentUpon>AddRoleinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Filestorage\Roleinstallation.aspx.cs">
+      <DependentUpon>Roleinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Filestorage\Roleinstallation.aspx.designer.cs">
+      <DependentUpon>Roleinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Filestorage\Namespacecreation.aspx.cs">
+      <DependentUpon>Namespacecreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Filestorage\Namespacecreation.aspx.designer.cs">
+      <DependentUpon>Namespacecreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Filestorage\Smbsharecreation.aspx.cs">
+      <DependentUpon>Smbsharecreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Filestorage\Smbsharecreation.aspx.designer.cs">
+      <DependentUpon>Smbsharecreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\HyperV\AddHypervinstallation.aspx.cs">
+      <DependentUpon>AddHypervinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\HyperV\AddHypervinstallation.aspx.designer.cs">
+      <DependentUpon>AddHypervinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\HyperV\AddVirtualDiskCreation.aspx.cs">
+      <DependentUpon>AddVirtualDiskCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\HyperV\AddVirtualDiskCreation.aspx.designer.cs">
+      <DependentUpon>AddVirtualDiskCreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\HyperV\AddVMCreation.aspx.cs">
+      <DependentUpon>AddVMCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\HyperV\AddVMCreation.aspx.designer.cs">
+      <DependentUpon>AddVMCreation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\HyperV\AddVirtualSwitchCreation.aspx.cs">
       <DependentUpon>AddVirtualSwitchCreation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App\HyperV\AddVirtualSwitchCreation.aspx.designer.cs">
       <DependentUpon>AddVirtualSwitchCreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\HyperV\VMCreation.aspx.cs">
+      <DependentUpon>VMCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\HyperV\VMCreation.aspx.designer.cs">
+      <DependentUpon>VMCreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\HyperV\VirtualDiskCreation.aspx.cs">
+      <DependentUpon>VirtualDiskCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\HyperV\VirtualDiskCreation.aspx.designer.cs">
+      <DependentUpon>VirtualDiskCreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\HyperV\Hypervinstallation.aspx.cs">
+      <DependentUpon>Hypervinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\HyperV\Hypervinstallation.aspx.designer.cs">
+      <DependentUpon>Hypervinstallation.aspx</DependentUpon>
     </Compile>
     <Compile Include="App\HyperV\VirtualSwitchCreations.aspx.cs">
       <DependentUpon>VirtualSwitchCreations.aspx</DependentUpon>
@@ -151,6 +380,48 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App\DataSources\VirtualSwitchCreationDataSource.cs" />
+    <Compile Include="App\Remotedesktopservices\AddRdsinstallation.aspx.cs">
+      <DependentUpon>AddRdsinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\AddRdsinstallation.aspx.designer.cs">
+      <DependentUpon>AddRdsinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\AddCollectioncreation.aspx.cs">
+      <DependentUpon>AddCollectioncreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\AddCollectioncreation.aspx.designer.cs">
+      <DependentUpon>AddCollectioncreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\AddApppublish.aspx.cs">
+      <DependentUpon>AddApppublish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\AddApppublish.aspx.designer.cs">
+      <DependentUpon>AddApppublish.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\Apppublish.aspx.cs">
+      <DependentUpon>Apppublish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\Apppublish.aspx.designer.cs">
+      <DependentUpon>Apppublish.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\Collectioncreation.aspx.cs">
+      <DependentUpon>Collectioncreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\Collectioncreation.aspx.designer.cs">
+      <DependentUpon>Collectioncreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\Rdsinstallation.aspx.cs">
+      <DependentUpon>Rdsinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Remotedesktopservices\Rdsinstallation.aspx.designer.cs">
+      <DependentUpon>Rdsinstallation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App\SignOut.aspx.cs">
       <DependentUpon>SignOut.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -162,6 +433,34 @@
     <Compile Include="App\WebControls\GridViewEx.cs" />
     <Compile Include="App\WebControls\GridViewExFilterPanel.cs" />
     <Compile Include="App\WebControls\ObjectDataSourceEx.cs" />
+    <Compile Include="App\Webserver\AddWebsitecreation.aspx.cs">
+      <DependentUpon>AddWebsitecreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Webserver\AddWebsitecreation.aspx.designer.cs">
+      <DependentUpon>AddWebsitecreation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Webserver\AddWebserverinstallation.aspx.cs">
+      <DependentUpon>AddWebserverinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Webserver\AddWebserverinstallation.aspx.designer.cs">
+      <DependentUpon>AddWebserverinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Webserver\Webserverinstallation.aspx.cs">
+      <DependentUpon>Webserverinstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Webserver\Webserverinstallation.aspx.designer.cs">
+      <DependentUpon>Webserverinstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\Webserver\Websitecreation.aspx.cs">
+      <DependentUpon>Websitecreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\Webserver\Websitecreation.aspx.designer.cs">
+      <DependentUpon>Websitecreation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +509,9 @@
       <Project>{d4ed85f0-701c-4be1-9614-04bc215bb2f5}</Project>
       <Name>Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PSIFiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

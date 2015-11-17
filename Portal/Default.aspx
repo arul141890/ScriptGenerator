@@ -57,11 +57,17 @@
                 font-size: small;
                 padding-left: 60px;
             }
+            #form1 {
+                margin-left: auto;
+                margin-right: auto;
+            }
         </style>
 
     </head>
-    <body>
+    <body style="height: auto">
+
         <form id="form1" runat="server">
+                    
             <div>
                 <div class="loginbox">
                     <div class="header">
@@ -89,6 +95,6 @@
                 </div>
 
             </div>
-        </form>
+         </form>
     </body>
 </html>

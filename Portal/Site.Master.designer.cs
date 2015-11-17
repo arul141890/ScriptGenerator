@@ -40,6 +40,51 @@ namespace Portal {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuHyperV;
         
         /// <summary>
+        /// mnuDhcp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuDhcp;
+        
+        /// <summary>
+        /// mnuDns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuDns;
+        
+        /// <summary>
+        /// mnuFilestorage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuFilestorage;
+        
+        /// <summary>
+        /// mnuRDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuRDS;
+        
+        /// <summary>
+        /// mnuWebserver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuWebserver;
+        
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>

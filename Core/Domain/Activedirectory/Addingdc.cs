@@ -1,6 +1,6 @@
 ﻿namespace Core.Domain.Activedirectory
 {
-    public class Adinstallation : BaseModel
+    public class Addingdc : BaseModel
     {
         public string Createorjoin { get; set; }
 

@@ -321,6 +321,7 @@ select {
     margin-top: 5px;
     max-width: 160px;
     min-width: 160px;
+    width: 222px;
 }
 
 .s-form-container .command { margin: 5px 0; }

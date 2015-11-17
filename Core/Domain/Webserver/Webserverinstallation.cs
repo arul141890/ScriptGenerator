@@ -6,6 +6,5 @@
 
         public string Hostname { get; set; }
 
-        public string Installationtype { get; set; }
     }
 }

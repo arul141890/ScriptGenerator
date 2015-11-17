@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activedirectory\IForestCreationService.cs" />
+    <Compile Include="Activedirectory\ForestCreationService.cs" />
     <Compile Include="HyperV\IVirtualSwitchCreationService.cs" />
     <Compile Include="HyperV\VirtualSwitchCreationService.cs" />
     <Compile Include="IScriptGeneratorService.cs" />
@@ -67,6 +69,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dhcp\" />
+    <Folder Include="Dns\" />
+    <Folder Include="Filestorage\" />
+    <Folder Include="Remotedesktopservices\" />
+    <Folder Include="Webserver\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
