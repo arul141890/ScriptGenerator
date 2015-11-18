@@ -28,7 +28,7 @@ namespace Portal
         public static void Configure()
         {
             ObjectFactory.Initialize(
-                c =>
+(System.Action<IInitializationExpression>)                (                c =>
                 {
                     // database configuration
                     c.For(typeof(IRepository<>)).Use(typeof(Repository<>));
@@ -38,15 +38,15 @@ namespace Portal
 
                  // Service Types Configuration
                     c.Scan(
-                        x =>
+(System.Action<StructureMap.Graph.IAssemblyScanner>)                        (                        x =>
                         {
-                            x.AssemblyContainingType<IUserService>();
+                            x.AssemblyContainingType<Sevices.Users.IUserService>();
                             x.WithDefaultConventions();
-                        });
+                        }));
                     c.SetAllProperties(x => x.WithAnyTypeFromNamespace("Services"));
-                    c.For(typeof(IScriptGeneratorService<>)).Use(typeof(ScriptGeneratorService<>));
+                    c.For(typeof(Sevices.IScriptGeneratorService<>)).Use(typeof(Sevices.ScriptGeneratorService<>));
 
-                });
+                }));
         }
 
         #endregion
