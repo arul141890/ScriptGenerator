@@ -7,5 +7,7 @@
         public string Ipaddress { get; set; }
 
         public string Zonename { get; set; }
+
+        public string Csvfilename { get; set; }
     }
 }

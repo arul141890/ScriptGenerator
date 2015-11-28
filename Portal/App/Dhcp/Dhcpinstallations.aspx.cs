@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI.WebControls;
 using Core.Domain;
-using Core.Domain.Hyperv;
+using Core.Domain.dhcp;
 using Portal.App.Common;
 using Portal.App.DataSources;
 using Sevices.Users;
 
-namespace Portal.App.HyperV
+namespace Portal.App.Dhcp
 {
-    public partial class VirtualSwitchCreations : BasePage
+    public partial class Dhcpinstallations : BasePage
     {
         public IUserService ClientUserService { get; set; }
         protected void Page_Init(object sender, EventArgs e)
         {
-            this.dsData.TypeName = typeof(VirtualSwitchCreationDataSource).FullName;
-            this.dsData.DataObjectTypeName = typeof(VirtualSwitchCreation).FullName;
+            this.dsData.TypeName = typeof(DhcpinstallationDataSource).FullName;
+            this.dsData.DataObjectTypeName = typeof(Dhcpinstallation).FullName;
             this.dsData.SelectParameters.Add("startDate", "");
             this.dsData.SelectParameters.Add("endDate", "");
 
@@ -26,7 +26,7 @@ namespace Portal.App.HyperV
 
             // set edit button
             this.gvData.EditButtonUrlFields = "Id";
-            this.gvData.EditButtonUrlFormatString = "/App/HyperV/AddVirtualSwitchCreation.aspx?vscId={0}";
+            this.gvData.EditButtonUrlFormatString = "/App/Dhcp/AddDhcpinstallation.aspx?vscId={0}";
 
             this.gvData.GenerateColumns();
 

@@ -18,8 +18,11 @@
             <li><span class="label">Physical Adapter:</span>
                 <asp:TextBox ID="txtAdapter" ClientIDMode="Static" runat="server"></asp:TextBox>
             </li>
-            <li><span class="label">Allow Management OS:</span>
-                <asp:TextBox ID="txtAllowManagementOs" ClientIDMode="Static" runat="server"></asp:TextBox>
+           <li><span class="label">Allow Management OS:</span>
+                <asp:DropDownList ID="AllowManagementOs" runat="server">
+                    <asp:ListItem Selected="True">False</asp:ListItem>
+                    <asp:ListItem>True</asp:ListItem>
+                </asp:DropDownList>
             </li>
         </ul>
         <p class="error">

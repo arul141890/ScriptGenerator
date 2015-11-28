@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.App.HyperV {
+namespace Portal.App.Remotedesktopservices {
     
     
-    public partial class VirtualSwitchCreations {
+    public partial class Rdsinstallations {
         
         /// <summary>
         /// pnlFilter control.

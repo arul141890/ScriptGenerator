@@ -10,13 +10,13 @@ using Sevices.Users;
 
 namespace Portal.App.HyperV
 {
-    public partial class VirtualSwitchCreations : BasePage
+    public partial class VirtualDiskCreations : BasePage
     {
         public IUserService ClientUserService { get; set; }
         protected void Page_Init(object sender, EventArgs e)
         {
-            this.dsData.TypeName = typeof(VirtualSwitchCreationDataSource).FullName;
-            this.dsData.DataObjectTypeName = typeof(VirtualSwitchCreation).FullName;
+            this.dsData.TypeName = typeof(VirtualDiskCreationDataSource).FullName;
+            this.dsData.DataObjectTypeName = typeof(VirtualDiskCreation).FullName;
             this.dsData.SelectParameters.Add("startDate", "");
             this.dsData.SelectParameters.Add("endDate", "");
 
@@ -26,7 +26,7 @@ namespace Portal.App.HyperV
 
             // set edit button
             this.gvData.EditButtonUrlFields = "Id";
-            this.gvData.EditButtonUrlFormatString = "/App/HyperV/AddVirtualSwitchCreation.aspx?vscId={0}";
+            this.gvData.EditButtonUrlFormatString = "/App/HyperV/AddVirtualDiskCreation.aspx?vscId={0}";
 
             this.gvData.GenerateColumns();
 

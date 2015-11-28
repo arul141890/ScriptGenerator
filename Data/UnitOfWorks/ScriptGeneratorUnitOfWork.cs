@@ -11,7 +11,13 @@ using System;
 using System.Collections;
 using Core.Data;
 using Core.Domain;
+using Core.Domain.Activedirectory;
+using Core.Domain.dhcp;
+using Core.Domain.dns;
+using Core.Domain.Filestorage;
 using Core.Domain.Hyperv;
+using Core.Domain.Remotedesktopservices;
+using Core.Domain.Webserver;
 using Data.Repositories;
 
 namespace Data.UnitOfWorks
@@ -26,6 +32,116 @@ namespace Data.UnitOfWorks
 
         #region Public Properties
 
+        public IRepository<Addingdc> Addingdc
+        {
+            get
+            {
+                return this.Repository<Addingdc>();
+            }
+        }
+
+
+        public IRepository<Addingrodc> Addingrodc
+        {
+            get
+            {
+                return this.Repository<Addingrodc>();
+            }
+        }
+        
+        
+        
+        public IRepository<Forestcreation> Forestcreation
+        {
+            get
+            {
+                return this.Repository<Forestcreation>();
+            }
+        }
+
+
+        public IRepository<Dhcpinstallation> Dhcpinstallation
+        {
+            get
+            {
+                return this.Repository<Dhcpinstallation>();
+            }
+        }
+        
+        
+           public IRepository<Scopecreation> Scopecreation
+        {
+            get
+            {
+                return this.Repository<Scopecreation>();
+            }
+        }
+
+
+        public IRepository<Dnsinstallation> Dnsinstallation
+        {
+            get
+            {
+                return this.Repository<Dnsinstallation>();
+            }
+        }
+        
+        
+        
+        public IRepository<Dnsrecordcreation> Dnsrecordcreation
+        {
+            get
+            {
+                return this.Repository<Dnsrecordcreation>();
+            }
+        }
+
+
+        public IRepository<Namespacecreation> Namespacecreation
+        {
+            get
+            {
+                return this.Repository<Namespacecreation>();
+            }
+        }        
+
+        
+        public IRepository<Roleinstallation> Roleinstallation
+        {
+            get
+            {
+                return this.Repository<Roleinstallation>();
+            }
+        }
+
+
+        public IRepository<Smbsharecreation> Smbsharecreation
+        {
+            get
+            {
+                return this.Repository<Smbsharecreation>();
+            }
+        }
+        
+        
+        
+        public IRepository<Hypervinstallation> Hypervinstallation
+        {
+            get
+            {
+                return this.Repository<Hypervinstallation>();
+            }
+        }
+
+
+        public IRepository<VirtualDiskCreation> Virtualdiskcreation
+        {
+            get
+            {
+                return this.Repository<VirtualDiskCreation>();
+            }
+        }
+
         public IRepository<VirtualSwitchCreation> VirtualSwitchCreations
         {
             get
@@ -35,7 +151,60 @@ namespace Data.UnitOfWorks
         }
 
 
-        public IRepository<User> Users
+        public IRepository<VMCreation> VMCreation
+        {
+            get
+            {
+                return this.Repository<VMCreation>();
+            }
+        }
+
+
+        public IRepository<Apppublish> Apppublish
+        {
+            get
+            {
+                return this.Repository<Apppublish>();
+            }
+        }
+        
+        
+        
+        public IRepository<Collectioncreation> Collectioncreation
+        {
+            get
+            {
+                return this.Repository<Collectioncreation>();
+            }
+        }
+
+
+        public IRepository<Rdsinstallation> Rdsinstallation
+        {
+            get
+            {
+                return this.Repository<Rdsinstallation>();
+            }
+        }        
+
+         public IRepository<Webserverinstallation> Webserverinstallation
+        {
+            get
+            {
+                return this.Repository<Webserverinstallation>();
+            }
+        }
+
+
+        public IRepository<Websitecreation> Websitecreation
+        {
+            get
+            {
+                return this.Repository<Websitecreation>();
+            }
+        }        
+
+       public IRepository<User> Users
         {
             get
             {

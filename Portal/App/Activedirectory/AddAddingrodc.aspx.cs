@@ -5,75 +5,137 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CommonUtilitiesModule;
-using Core.Domain.Hyperv;
+using Core.Domain.Activedirectory;
 using Portal.App.Common;
-using Sevices.HyperV;
+using Sevices.Activedirectory;
 using StructureMap.Attributes;
 using System.IO;
 using System.Configuration;
-namespace Portal.App.HyperV
+namespace Portal.App.Activedirectory
 {
-    public partial class AddVirtualSwitchCreation : BasePage
+    public partial class AddAddingrodc : BasePage
     {
         [SetterProperty]
-        public IVirtualSwitchCreationService VirtualSwitchCreationService { get; set; }
+        public IAddingrodcService AddingrodcService { get; set; }
         
 
         protected void ButtonClick(object sender, EventArgs e)
         {
             this.HideLabels();
-            bool returnResult = false;
-            var switchName = txtSwitchName.Text.Trim();
-            var adapter = this.txtAdapter.Text.Trim();
-            var allowManagementOs = this.txtAllowManagementOs.Text.Trim();
+            var Hostname = txtHostname.Text.Trim();
+            var Ipaddress = txtIpaddress.Text.Trim();
+            var AllowpraName = txtAllowpraccount.Text.Trim();
+            // correct declaration for DD
+            var Critreplica = DDCriticalreplication.SelectedItem.Text;
+            var delegatedadminacc = txtDelegatedacc.Text.Trim();
+            var DenypraName = txtdenypraccount.Text.Trim();
+            var DomainName = txtdomainname.Text.Trim();
+            var InstallDNS = DDInstallDNS.SelectedItem.Text;
+            var SiteName = txtSitename.Text.Trim();
             
-            // Switch Name validation
-            if (string.IsNullOrWhiteSpace(switchName))
+            // RODC parameter validation
+            if (string.IsNullOrWhiteSpace(Hostname))
             {
-                this.ShowErrorMessage("Please enter switch name.");
+                this.ShowErrorMessage("Please enter Hostname.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(adapter))
+            if (string.IsNullOrWhiteSpace(Ipaddress))
             {
-                this.ShowErrorMessage("Please enter adapter.");
+                this.ShowErrorMessage("Please enter IP Address.");
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(AllowpraName))
+            {
+                this.ShowErrorMessage("Please enter account that is allowed to replicate Password.");
+                return;
+            }
 
+            if (Critreplica == "--SELECT--")
+            {
+                this.ShowErrorMessage("Please select an option.");
+            }
+
+            if (string.IsNullOrWhiteSpace(delegatedadminacc))
+            {
+                this.ShowErrorMessage("Please enter admin account that can be delegated control.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(DenypraName))
+            {
+                this.ShowErrorMessage("Please enter account that is denied to replicate Password.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(DomainName))
+            {
+                this.ShowErrorMessage("Please enter Domain name");
+                return;
+            }
+
+            if (InstallDNS == "--SELECT--")
+            {
+                this.ShowErrorMessage("Please select an option.");
+            }
+
+            if (string.IsNullOrWhiteSpace(SiteName))
+            {
+                this.ShowErrorMessage("Please enter Site name.");
+                return;
+            }
 
             try
             {
                 //Call PSI file creater Method:
-                CreatePSIFile(switchName, adapter, allowManagementOs);
+                CreatePSIFile(Hostname, Ipaddress, AllowpraName, Critreplica, delegatedadminacc, DenypraName, DomainName, InstallDNS, SiteName);
                
                 
-                if (0 == EditVirtualSwitchCreationId)
+                if (0 == EditRODCId)
                 {
-                    var clientUser = new VirtualSwitchCreation()
+                    var clientUser = new Addingrodc()
                     {
                         CreatedBy = Context.User.Identity.Name,
                         CreatedDate = DateTimeHelper.Now,
-                        AllowManagementOs = allowManagementOs,
-                        PhysicalAdapter = adapter,
-                        SwitchName = switchName
+                        Hostname = Hostname,
+                        Ipaddress = Ipaddress,
+                        AllowpasswordreplicationaccountName = AllowpraName,
+                        CriticalReplicationOnly=Critreplica,
+                        Delegatedadministratoraccountname = delegatedadminacc,
+                        Denypasswordreplicationaccountname = DenypraName,
+                        DomainName= DomainName,
+                        InstallDNS = InstallDNS,
+                        SiteName = SiteName
+                        
                     };
 
-                    VirtualSwitchCreationService.Create(clientUser);
+                    AddingrodcService.Create(clientUser);
                     ShowSuccessMessage("Script Generated. Click to download.");
-
-                    txtAdapter.Text = string.Empty;
-                    txtAllowManagementOs.Text = string.Empty;
-                    txtSwitchName.Text = string.Empty;
+                    txtHostname.Text = string.Empty;
+                    txtIpaddress.Text = string.Empty;
+                    txtAllowpraccount.Text = string.Empty;
+                    DDCriticalreplication.SelectedItem.Value = DropdownDefaultText;
+                    txtDelegatedacc.Text = string.Empty;
+                    txtdenypraccount.Text = string.Empty;
+                    txtdomainname.Text = string.Empty;
+                    DDInstallDNS.SelectedItem.Value = DropdownDefaultText;
+                    txtSitename.Text = string.Empty;
                 }
                 else
                 {
-                    var virtualSwitchCreation = VirtualSwitchCreationService.Retrieve(EditVirtualSwitchCreationId);
-                    virtualSwitchCreation.AllowManagementOs = allowManagementOs;
-                    virtualSwitchCreation.SwitchName = switchName;
-                    virtualSwitchCreation.PhysicalAdapter = adapter;
+                    var RODCcreation = AddingrodcService.Retrieve(EditRODCId);
+                    RODCcreation.Hostname = Hostname;
+                    RODCcreation.Ipaddress = Ipaddress;
+                    RODCcreation.AllowpasswordreplicationaccountName = AllowpraName;
+                    RODCcreation.CriticalReplicationOnly = Critreplica;
+                    RODCcreation.Delegatedadministratoraccountname = delegatedadminacc;
+                    RODCcreation.Denypasswordreplicationaccountname = DenypraName;
+                    RODCcreation.DomainName = DomainName;
+                    RODCcreation.InstallDNS = InstallDNS;
+                    RODCcreation.SiteName = SiteName;
 
-                    VirtualSwitchCreationService.Update(virtualSwitchCreation);
+                    AddingrodcService.Update(RODCcreation);
                     ShowSuccessMessage("Script Generated. Click to download.");
                 }
             }
@@ -93,24 +155,31 @@ namespace Portal.App.HyperV
 
             try
             {
-                EditVirtualSwitchCreationId = Convert.ToInt32(Request.QueryString["vscId"]);
+                EditRODCId = Convert.ToInt32(Request.QueryString["vscId"]);
             }
             catch (Exception)
             {
-                EditVirtualSwitchCreationId = 0;
+                EditRODCId = 0;
             }
 
             // check if edit mode
-            if (EditVirtualSwitchCreationId != 0)
+            if (EditRODCId != 0)
             {
-                var virtualSwitchCreation = this.VirtualSwitchCreationService.Retrieve(EditVirtualSwitchCreationId);
-                if (virtualSwitchCreation != null)
+                var RODCcreation = this.AddingrodcService.Retrieve(EditRODCId);
+                if (RODCcreation != null)
                 {
-                    lblTitle.Text = "Edit Vitual Switch"; // change caption
-                    txtAdapter.Text = virtualSwitchCreation.PhysicalAdapter;
-                    txtAllowManagementOs.Text = virtualSwitchCreation.AllowManagementOs;
-                    txtSwitchName.Text = virtualSwitchCreation.SwitchName;
-                }
+                    lblTitle.Text = "Edit RODC Parameters"; // change caption
+                    txtHostname.Text = RODCcreation.Hostname;
+                    txtIpaddress.Text = RODCcreation.Ipaddress;
+                    txtAllowpraccount.Text = RODCcreation.AllowpasswordreplicationaccountName;
+                    DDCriticalreplication.SelectedItem.Value = RODCcreation.CriticalReplicationOnly;
+                    txtDelegatedacc.Text = RODCcreation.Delegatedadministratoraccountname;
+                    txtdenypraccount.Text = RODCcreation.Denypasswordreplicationaccountname;
+                    txtdomainname.Text = RODCcreation.DomainName;
+                    DDInstallDNS.SelectedItem.Value = RODCcreation.InstallDNS;
+                    txtSitename.Text = RODCcreation.SiteName;
+
+                 }
             }
 
         }
@@ -120,14 +189,14 @@ namespace Portal.App.HyperV
             this.HideLabels();
         }
 
-        public int EditVirtualSwitchCreationId { get; set; }
+        public int EditRODCId { get; set; }
 
        
-        private bool CreatePSIFile(string switchName, string adapter, string allowManagementOs)
+        private bool CreatePSIFile(string Hostname,string Ipaddress,string AllowpraName,string Critreplica,string delegatedadminacc,string DenypraName,string DomainName,string InstallDNS,string SiteName)
         {
             bool returnResult = false;
            // string folderName = ConfigurationManager.ConnectionStrings["PSIFilePath"].ToString();
-            string psiFilePath =  "VirtualSwitch" + ".ps1";
+            string psiFilePath =  "NewRODC" + ".ps1";
 
             try
             {
@@ -147,9 +216,9 @@ namespace Portal.App.HyperV
                     writer.WriteLine("#>");
                     writer.WriteLine("Import-Module ServerManager");
                     writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+switchName);
-                    writer.WriteLine("$physicaladapter="+adapter);
-                    writer.WriteLine("$allowmos="+allowManagementOs);
+                    writer.WriteLine("$switchname=");
+                    writer.WriteLine("$physicaladapter=");
+                    writer.WriteLine("$allowmos=");
                     writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
                     writer.Close();
                     lbdownload.Visible = true;

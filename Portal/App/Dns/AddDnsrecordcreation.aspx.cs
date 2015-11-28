@@ -5,75 +5,86 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CommonUtilitiesModule;
-using Core.Domain.Hyperv;
+using Core.Domain.dns;
 using Portal.App.Common;
-using Sevices.HyperV;
+using Sevices.dns;
 using StructureMap.Attributes;
 using System.IO;
 using System.Configuration;
-namespace Portal.App.HyperV
+namespace Portal.App.Dns
 {
-    public partial class AddVirtualSwitchCreation : BasePage
+    public partial class AddDnsrecordcreation : BasePage
     {
         [SetterProperty]
-        public IVirtualSwitchCreationService VirtualSwitchCreationService { get; set; }
+        public IDnsrecordCreationService DnsrecordCreationService { get; set; }
         
 
         protected void ButtonClick(object sender, EventArgs e)
         {
             this.HideLabels();
             bool returnResult = false;
-            var switchName = txtSwitchName.Text.Trim();
-            var adapter = this.txtAdapter.Text.Trim();
-            var allowManagementOs = this.txtAllowManagementOs.Text.Trim();
-            
+            var Hostname = txtHostname.Text.Trim();
+            var Ipaddress = txtIpaddress.Text.Trim();
+            var Zonename = txtZonename.Text.Trim();
+            var Csvfilename = txtCsvfilename.Text.Trim();
             // Switch Name validation
-            if (string.IsNullOrWhiteSpace(switchName))
+            if (string.IsNullOrWhiteSpace(Hostname))
             {
-                this.ShowErrorMessage("Please enter switch name.");
+                this.ShowErrorMessage("Please enter Hostname.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(adapter))
+            if (string.IsNullOrWhiteSpace(Ipaddress))
             {
-                this.ShowErrorMessage("Please enter adapter.");
+                this.ShowErrorMessage("Please enter IP Address.");
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(Zonename))
+            {
+                this.ShowErrorMessage("Please enter Zone Name.");
+                return;
+            }
 
-
+            if (string.IsNullOrWhiteSpace(Csvfilename))
+            {
+                this.ShowErrorMessage("Please enter Csv File Location.");
+                return;
+            }
             try
             {
                 //Call PSI file creater Method:
-                CreatePSIFile(switchName, adapter, allowManagementOs);
+                CreatePSIFile(Hostname, Ipaddress, Zonename, Csvfilename );
                
                 
-                if (0 == EditVirtualSwitchCreationId)
+                if (0 == EditDnsrecordcreationId)
                 {
-                    var clientUser = new VirtualSwitchCreation()
+                    var clientUser = new Dnsrecordcreation()
                     {
                         CreatedBy = Context.User.Identity.Name,
                         CreatedDate = DateTimeHelper.Now,
-                        AllowManagementOs = allowManagementOs,
-                        PhysicalAdapter = adapter,
-                        SwitchName = switchName
+                        Hostname = Hostname,
+                        Ipaddress = Ipaddress,
+                        Zonename = Zonename,
+                        Csvfilename = Csvfilename
                     };
 
-                    VirtualSwitchCreationService.Create(clientUser);
+                    DnsrecordCreationService.Create(clientUser);
                     ShowSuccessMessage("Script Generated. Click to download.");
-
-                    txtAdapter.Text = string.Empty;
-                    txtAllowManagementOs.Text = string.Empty;
-                    txtSwitchName.Text = string.Empty;
+                    txtHostname.Text = string.Empty;
+                    txtIpaddress.Text = string.Empty;
+                    txtZonename.Text = string.Empty;
+                    txtCsvfilename.Text = string.Empty;
                 }
                 else
                 {
-                    var virtualSwitchCreation = VirtualSwitchCreationService.Retrieve(EditVirtualSwitchCreationId);
-                    virtualSwitchCreation.AllowManagementOs = allowManagementOs;
-                    virtualSwitchCreation.SwitchName = switchName;
-                    virtualSwitchCreation.PhysicalAdapter = adapter;
+                    var DnsrecordCreation = DnsrecordCreationService.Retrieve(EditDnsrecordcreationId);
+                    DnsrecordCreation.Hostname = Hostname;
+                    DnsrecordCreation.Ipaddress = Ipaddress;
+                    DnsrecordCreation.Zonename = Zonename;
+                    DnsrecordCreation.Csvfilename = Csvfilename;
 
-                    VirtualSwitchCreationService.Update(virtualSwitchCreation);
+                    DnsrecordCreationService.Update(DnsrecordCreation);
                     ShowSuccessMessage("Script Generated. Click to download.");
                 }
             }
@@ -93,23 +104,24 @@ namespace Portal.App.HyperV
 
             try
             {
-                EditVirtualSwitchCreationId = Convert.ToInt32(Request.QueryString["vscId"]);
+                EditDnsrecordcreationId = Convert.ToInt32(Request.QueryString["vscId"]);
             }
             catch (Exception)
             {
-                EditVirtualSwitchCreationId = 0;
+                EditDnsrecordcreationId = 0;
             }
 
             // check if edit mode
-            if (EditVirtualSwitchCreationId != 0)
+            if (EditDnsrecordcreationId != 0)
             {
-                var virtualSwitchCreation = this.VirtualSwitchCreationService.Retrieve(EditVirtualSwitchCreationId);
-                if (virtualSwitchCreation != null)
+                var DnsrecordCreation = this.DnsrecordCreationService.Retrieve(EditDnsrecordcreationId);
+                if (DnsrecordCreation != null)
                 {
-                    lblTitle.Text = "Edit Vitual Switch"; // change caption
-                    txtAdapter.Text = virtualSwitchCreation.PhysicalAdapter;
-                    txtAllowManagementOs.Text = virtualSwitchCreation.AllowManagementOs;
-                    txtSwitchName.Text = virtualSwitchCreation.SwitchName;
+                    lblTitle.Text = "Edit DNS record parameters"; // change caption
+                    txtHostname.Text = DnsrecordCreation.Hostname;
+                    txtIpaddress.Text = DnsrecordCreation.Ipaddress;
+                    txtZonename.Text = DnsrecordCreation.Zonename;
+                    txtCsvfilename.Text = DnsrecordCreation.Csvfilename;
                 }
             }
 
@@ -120,10 +132,10 @@ namespace Portal.App.HyperV
             this.HideLabels();
         }
 
-        public int EditVirtualSwitchCreationId { get; set; }
+        public int EditDnsrecordcreationId { get; set; }
 
        
-        private bool CreatePSIFile(string switchName, string adapter, string allowManagementOs)
+        private bool CreatePSIFile(string Hostname, string Ipaddress, string Zonename, string Csvfilename)
         {
             bool returnResult = false;
            // string folderName = ConfigurationManager.ConnectionStrings["PSIFilePath"].ToString();
@@ -147,9 +159,9 @@ namespace Portal.App.HyperV
                     writer.WriteLine("#>");
                     writer.WriteLine("Import-Module ServerManager");
                     writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+switchName);
-                    writer.WriteLine("$physicaladapter="+adapter);
-                    writer.WriteLine("$allowmos="+allowManagementOs);
+                    writer.WriteLine("$switchname="+Hostname);
+                    writer.WriteLine("$physicaladapter="+Ipaddress);
+                    writer.WriteLine("$allowmos="+Csvfilename);
                     writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
                     writer.Close();
                     lbdownload.Visible = true;

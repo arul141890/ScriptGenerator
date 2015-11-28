@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.App.HyperV {
+namespace Portal.App.Webserver {
     
     
-    public partial class VirtualSwitchCreations {
+    public partial class Websitecreations {
         
         /// <summary>
         /// pnlFilter control.

@@ -105,61 +105,61 @@
                             <!--ActiveDirectory Menu -->
                             <li id="mnuActive" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Active Directory<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/App/Activedirectory/ForestCreation.aspx">Create Forest</a></li>
-                                    <li><a href="/App/Activedirectory/Addingdc.aspx">Add Domain Controller</a></li>
-                                    <li><a href="/App/Activedirectory/Addingrodc.aspx">Add RODC</a></li>
+                                    <li><a href="/App/Activedirectory/ForestCreations.aspx">Create Forest</a></li>
+                                    <li><a href="/App/Activedirectory/Addingdcs.aspx">Add Domain Controller</a></li>
+                                    <li><a href="/App/Activedirectory/Addingrodcs.aspx">Add RODC</a></li>
                                 </ul>
                              </li>
 
                             <!--Hyper-V Menu -->
                             <li id="mnuHyperV" class="dropdown" runat="server"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Hyper-V<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/App/HyperV/Hypervinstallation.aspx">Install Hyper-V</a></li>
+                                    <li><a href="/App/HyperV/Hypervinstallations.aspx">Install Hyper-V</a></li>
                                     <li><a href="/App/HyperV/VirtualSwitchCreations.aspx">Create Virtual Switch</a></li>
-                                    <li><a href="/App/HyperV/VirtualDiskCreation.aspx">Create Virtual Disk</a></li>
-                                    <li><a href="/App/HyperV/VMCreation.aspx">Create Virtual Machine</a></li>
+                                    <li><a href="/App/HyperV/VirtualDiskCreations.aspx">Create Virtual Disk</a></li>
+                                    <li><a href="/App/HyperV/VMCreations.aspx">Create Virtual Machine</a></li>
                                 </ul>
                             </li>
 
                             <!--DHCP Menu -->
                             <li id="mnuDhcp" class="dropdown" runat="server"><a href="#" class="dropdown-toggle" data-toggle="dropdown">DHCP<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/App/Dhcp/Dhcpinstallation.aspx">Install DHCP</a></li>
-                                    <li><a href="/App/Dhcp/Scopecreation.aspx">Create DHCP Scope</a></li>
+                                    <li><a href="/App/Dhcp/Dhcpinstallations.aspx">Install DHCP</a></li>
+                                    <li><a href="/App/Dhcp/Scopecreations.aspx">Create DHCP Scope</a></li>
                                 </ul>
                             </li>
 
                             <!--Dns Menu -->
                             <li id="mnuDns" class="dropdown" runat="server"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> DNS <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/App/Dns/Dnsinstallation.aspx">Install DNS</a></li>
-                                    <li><a href="/App/Dns/Dnsrecordcreation.aspx">Create DNS Record</a></li>
+                                    <li><a href="/App/Dns/Dnsinstallations.aspx">Install DNS</a></li>
+                                    <li><a href="/App/Dns/Dnsrecordcreations.aspx">Create DNS Record</a></li>
                                 </ul>
                             </li>
 
                             <!--File and Storage Menu -->
                             <li id="mnuFilestorage" class="dropdown" runat="server"><a href="#" class="dropdown-toggle" data-toggle="dropdown">File Storage<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/App/Filestorage/Roleinstallation.aspx">Install File and Storage Services</a></li>
-                                    <li><a href="/App/Filestorage/Smbsharecreation.aspx">Create SMB share</a></li>
-                                    <li><a href="/App/Filestorage/Namespacecreation.aspx">Create DFS Namespace</a></li>
+                                    <li><a href="/App/Filestorage/Roleinstallations.aspx">Install File and Storage Services</a></li>
+                                    <li><a href="/App/Filestorage/Smbsharecreations.aspx">Create SMB share</a></li>
+                                    <li><a href="/App/Filestorage/Namespacecreations.aspx">Create DFS Namespace</a></li>
                                 </ul>
                              </li>
 
                             <!--Remote Desktop Services Menu -->
                             <li id="mnuRDS" class="dropdown" runat="server"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> RDS <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/App/Remotedesktopservices/Rdsinstallation.aspx">Install RDS servers</a></li>
-                                    <li><a href="/App/Remotedesktopservices/Collectioncreation.aspx">Create RDS Collection</a></li>
-                                    <li><a href="/App/Remotedesktopservices/Apppublish.aspx">Publish Applications</a></li>
+                                    <li><a href="/App/Remotedesktopservices/Rdsinstallations.aspx">Install RDS servers</a></li>
+                                    <li><a href="/App/Remotedesktopservices/Collectioncreations.aspx">Create RDS Collection</a></li>
+                                    <li><a href="/App/Remotedesktopservices/Apppublishs.aspx">Publish Applications</a></li>
                                  </ul>
                             </li>
 
                             <!--Web Server IIS Menu -->
                             <li id="mnuWebserver" class="dropdown" runat="server"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> IIS <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/App/Webserver/Webserverinstallation.aspx">Install WebServer</a></li>
-                                    <li><a href="/App/Webserver/Websitecreation.aspx">Create Website</a></li>
+                                    <li><a href="/App/Webserver/Webserverinstallations.aspx">Install WebServer</a></li>
+                                    <li><a href="/App/Webserver/Websitecreations.aspx">Create Website</a></li>
                                   </ul>
                             </li>
 

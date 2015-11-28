@@ -87,11 +87,19 @@
                             <li>
                                 <asp:Button Text="Login" ID="btnLogin" runat="server" OnClick="BtnLoginClick" />
                             </li>
+                            <li>
+                            <asp:Button Text="Register" ID="btnRegister" runat="server" OnClick="BtnRegisterClick" />
+                               
+                            </li>
+                             <li>
+                                <asp:Button Text="ResetPwd" ID="Button2" runat="server" OnClick="Btnreset" />
+                            </li>
                         </ul>
                     </div>
                     <div class="error">
                         <asp:Label Text="" ID="lblErrorMessage" runat="server" />
                     </div>
+                  
                 </div>
 
             </div>

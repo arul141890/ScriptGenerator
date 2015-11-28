@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.App.HyperV {
+namespace Portal.App.Activedirectory {
     
     
-    public partial class AddVirtualSwitchCreation {
+    public partial class AddAddingrodc {
         
         /// <summary>
         /// lblTitle control.
@@ -22,31 +22,85 @@ namespace Portal.App.HyperV {
         protected global::System.Web.UI.WebControls.Label lblTitle;
         
         /// <summary>
-        /// txtSwitchName control.
+        /// txtHostname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSwitchName;
+        protected global::System.Web.UI.WebControls.TextBox txtHostname;
         
         /// <summary>
-        /// txtAdapter control.
+        /// txtIpaddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdapter;
+        protected global::System.Web.UI.WebControls.TextBox txtIpaddress;
         
         /// <summary>
-        /// txtAllowManagementOs control.
+        /// DDCriticalreplication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAllowManagementOs;
+        protected global::System.Web.UI.WebControls.DropDownList DDCriticalreplication;
+        
+        /// <summary>
+        /// txtAllowpraccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAllowpraccount;
+        
+        /// <summary>
+        /// txtdenypraccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtdenypraccount;
+        
+        /// <summary>
+        /// txtDelegatedacc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDelegatedacc;
+        
+        /// <summary>
+        /// txtdomainname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtdomainname;
+        
+        /// <summary>
+        /// DDInstallDNS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDInstallDNS;
+        
+        /// <summary>
+        /// txtSitename control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSitename;
         
         /// <summary>
         /// lblErrorMessage control.

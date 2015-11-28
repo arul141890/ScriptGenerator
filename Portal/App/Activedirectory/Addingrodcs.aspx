@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Site.Master" CodeBehind="AddDnsrecordcreation.aspx.cs" Inherits="Portal.App.HyperV.VirtualSwitchCreations" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Site.Master" CodeBehind="Addingrodcs.aspx.cs" Inherits="Portal.App.Activedirectory.Addingrodcs" %>
 
 <%@ Register TagPrefix="asp" Namespace="Portal.App.WebControls" Assembly="Portal" %>
 
@@ -14,7 +14,7 @@
                 <a class="back" href="<%= this.ResolveClientUrl("~/Default.aspx") %>">&lt; Back to dashboard</a>
             </li>
             <li>
-                <a class="command" href="<%= this.ResolveClientUrl("~/App/HyperV/AddVirtualSwitchCreation.aspx") %>">Add new Virtual switch</a>
+                <a class="command" href="<%= this.ResolveClientUrl("~/App/Activedirectory/AddAddingrodc.aspx") %>">Add New ReadOnly Domain Controller</a>
             </li>
         </ul>
     </div>

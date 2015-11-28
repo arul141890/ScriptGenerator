@@ -1,25 +1,28 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="AddDnsrecordcreation.aspx.cs" Inherits="Portal.App.HyperV.AddVirtualSwitchCreation" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="AddDnsrecordcreation.aspx.cs" Inherits="Portal.App.Dns.AddDnsrecordcreation" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="s-breadcrumb">
-        <a class="back" href="<%= this.ResolveClientUrl("~/App/HyperV/VirtualSwitchCreations.aspx") %>"> &lt; Back to VirtualSwitchCreations</a>
+        <a class="back" href="<%= this.ResolveClientUrl("~/App/Dns/AddDnsrecordcreation.aspx") %>"> &lt; DNS Record Creation Dashboard</a>
     </div>
 
     <div class="s-form-container">
         <p class="title">
-            <asp:Label ID="lblTitle" runat="server" Text="Add Virtual Switch Creations"></asp:Label>
+            <asp:Label ID="lblTitle" runat="server" Text="Create DNS Record"></asp:Label>
         </p>
         <ul>
-            <li><span class="label">Switch Name:</span>
-                <asp:TextBox ID="txtSwitchName" ClientIDMode="Static" runat="server"></asp:TextBox>
+            <li><span class="label">DNS Server Name:</span>
+                <asp:TextBox ID="txtHostname" ClientIDMode="Static" runat="server"></asp:TextBox>
             </li>
-            <li><span class="label">Physical Adapter:</span>
-                <asp:TextBox ID="txtAdapter" ClientIDMode="Static" runat="server"></asp:TextBox>
+            <li><span class="label">IP Address:</span>
+                <asp:TextBox ID="txtIpaddress" ClientIDMode="Static" runat="server"></asp:TextBox>
             </li>
-            <li><span class="label">Allow Management OS:</span>
-                <asp:TextBox ID="txtAllowManagementOs" ClientIDMode="Static" runat="server"></asp:TextBox>
+            <li><span class="label">Zone Name:</span>
+                <asp:TextBox ID="txtZonename" ClientIDMode="Static" runat="server"></asp:TextBox>
+            </li>
+             <li><span class="label">CSV File Name:</span>
+                <asp:TextBox ID="txtCsvfilename" ClientIDMode="Static" runat="server"></asp:TextBox>
             </li>
         </ul>
         <p class="error">

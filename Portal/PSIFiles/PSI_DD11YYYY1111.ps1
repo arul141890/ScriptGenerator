@@ -1,0 +1,3 @@
+testswitch1
+testphyadapter1
+true

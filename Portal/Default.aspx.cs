@@ -35,6 +35,18 @@ namespace Portal
             }
         }
 
+        protected void BtnRegisterClick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Register.aspx");
+        }
+
+        protected void Btnreset(object sender, EventArgs e)
+        {
+
+            //reset password code
+
+        }
+
         protected void BtnLoginClick(object sender, EventArgs e)
         {
             lblErrorMessage.Text = "";

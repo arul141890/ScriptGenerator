@@ -1,7 +1,6 @@
-﻿using Core.Domain;
-using Core.Domain.Hyperv;
+﻿using Core.Domain.Hyperv;
 using Data.UnitOfWorks;
-using Sevices.Users;
+
 
 namespace Sevices.HyperV
 {
