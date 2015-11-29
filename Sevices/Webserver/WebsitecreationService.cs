@@ -5,9 +5,9 @@ using Sevices.Users;
 
 namespace Sevices.Webserver
 {
-    public class WebsiteCreationService : ScriptGeneratorService<Websitecreation>, IWebsitecreationService
+    public class WebsitecreationService : ScriptGeneratorService<Websitecreation>, IWebsitecreationService
     {
-        public WebsiteCreationService(IScriptGeneratorUnitOfWork uow)
+        public WebsitecreationService(IScriptGeneratorUnitOfWork uow)
             : base(uow)
         {
         }

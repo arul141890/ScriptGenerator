@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="s-breadcrumb">
-        <a class="back" href="<%= this.ResolveClientUrl("~/App/Activedirectory/Addingdc.aspx") %>"> &lt; Domain Controller Dashboard</a>
+        <a class="back" href="<%= this.ResolveClientUrl("~/App/Activedirectory/Addingdcs.aspx") %>"> &lt; Domain Controller Dashboard</a>
     </div>
 
     <div class="s-form-container">

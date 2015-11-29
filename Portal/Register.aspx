@@ -94,8 +94,7 @@
                             <li>
                                 <asp:Button Text="Login" ID="Button1" runat="server" OnClick="BtnLogin" />
                             </li>
-                           
-                             <li>
+                            <li>
                                 <asp:Button Text="Register" ID="btnRegister" runat="server" OnClick="BtnRegisterClick" />
                             </li>
                         </ul>
@@ -104,8 +103,7 @@
                         <asp:Label Text="" ID="lblRegisterError" runat="server" />
                     </div>
                 </div>
-
-            </div>
+                </div>
          </form>
     </body>
 </html>

@@ -5,7 +5,7 @@ using Sevices.Users;
 
 namespace Sevices.Activedirectory
 {
-    public class AddingdcService : ScriptGeneratorService<Addingdc>, IAddingdcCreationService
+    public class AddingdcService : ScriptGeneratorService<Addingdc>, IAddingdcService
     {
         public AddingdcService(IScriptGeneratorUnitOfWork uow)
             : base(uow)

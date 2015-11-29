@@ -20,14 +20,15 @@ namespace Portal
 
 
         protected void BtnLogin(object sender, EventArgs e)
-
         {
 
             Response.Redirect("~/Default.aspx");
         }
 
+
         protected void BtnRegisterClick(object sender, EventArgs e)
         {
+            lblRegisterError.Text = "";
             this.HideLabels();
             var Email = txtemail.Text.Trim();
             var Userid = txtUserId.Text.Trim();

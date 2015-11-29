@@ -16,7 +16,7 @@ namespace Portal.App.Activedirectory
     public partial class AddAddingdc : BasePage
     {
         [SetterProperty]
-        public IAddingdcCreationService AddingdcCreationService { get; set; }
+        public IAddingdcService AddingdcCreationService { get; set; }
         
                 protected void ButtonClick(object sender, EventArgs e)
         {

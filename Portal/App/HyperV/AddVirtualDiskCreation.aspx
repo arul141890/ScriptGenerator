@@ -19,7 +19,7 @@
                 <asp:TextBox ID="txtVHDSize" ClientIDMode="Static" runat="server"></asp:TextBox>
             </li>
              <li><span class="label">Disk Type:</span>
-                <asp:DropDownList ID="DDdisktype" runat="server" AutoPostBack="true" OnSelectedIndexChanged ="OnDiskTypeChanged"  OnTextChanged="disktypeDD_SelectedIndexChanged">
+                <asp:DropDownList ID="DDdisktype" runat="server" AutoPostBack="true" OnTextChanged="disktypeDD_SelectedIndexChanged">
                     <asp:ListItem Selected="True">--SELECT--</asp:ListItem>
                     <asp:ListItem>Fixed Disk</asp:ListItem>
                     <asp:ListItem>Dynamic Disk</asp:ListItem>
