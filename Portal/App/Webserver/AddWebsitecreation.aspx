@@ -13,20 +13,18 @@
         </p>
         <ul>
             <li><span class="label">Application pool Name:</span>
-                <asp:TextBox ID="txtapppool" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtapppool" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
             <li><span class="label">Website Name:</span>
-                <asp:TextBox ID="txtwebsite" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtwebsite" ClientIDMode="Static" runat="server" MaxLength="25"></asp:TextBox>
             </li>
             <li><span class="label">Port Number:</span>
-                <asp:TextBox ID="txtportnumber" ClientIDMode="Static" runat="server"></asp:TextBox>
-                <asp:CompareValidator runat="server" operator="DataTypeCheck" Type="Integer" ControlToValidate="txtportnumber"></asp:CompareValidator>
+                <asp:TextBox ID="txtportnumber" ClientIDMode="Static" runat="server" MaxLength="6"></asp:TextBox>
+                
             </li>
-            <li><span class="label">Website DNS Name:</span>
-                <asp:TextBox ID="Txtdnsname" ClientIDMode="Static" runat="server"></asp:TextBox>
-            </li>
+            
             <li><span class="label">Physical Path:</span>
-                <asp:TextBox ID="Txtphysicalpath" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="Txtphysicalpath" ClientIDMode="Static" runat="server" MaxLength="100"></asp:TextBox>
             </li>
         </ul>
         <p class="error">

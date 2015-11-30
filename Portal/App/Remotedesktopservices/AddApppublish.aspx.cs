@@ -27,7 +27,7 @@ namespace Portal.App.Remotedesktopservices
             var Displayname = txtDisplayname.Text.Trim();
             var Filepath = txtFilepath.Text.Trim();
             var collectionname = txtcollectionname.Text.Trim();
-            var collectionbroker = txtConnectionbroker.Text.Trim();
+            var connectionbroker = txtConnectionbroker.Text.Trim();
 
             // App publish parameters validation
             if (string.IsNullOrWhiteSpace(Alias))
@@ -54,7 +54,7 @@ namespace Portal.App.Remotedesktopservices
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(collectionbroker))
+            if (string.IsNullOrWhiteSpace(connectionbroker))
             {
                 this.ShowErrorMessage("Please enter Collection Broker name.");
                 return;
@@ -62,7 +62,7 @@ namespace Portal.App.Remotedesktopservices
             try
             {
                 //Call PSI file creater Method:
-                CreatePSIFile(Alias, Displayname, Filepath, collectionname, collectionbroker);
+                CreatePSIFile(Alias, Displayname, Filepath, collectionname, connectionbroker);
                
                 
                 if (0 == EditApppublishId)
@@ -75,7 +75,7 @@ namespace Portal.App.Remotedesktopservices
                         Displayname=Displayname,
                         Filepath=Filepath,
                         collectionname=collectionname,
-                        Connectionbroker=collectionbroker
+                        Connectionbroker=connectionbroker
                     };
 
                     ApppublishService.Create(clientUser);
@@ -94,7 +94,7 @@ namespace Portal.App.Remotedesktopservices
                     Apppublish.Displayname = Displayname;
                     Apppublish.Filepath = Filepath;
                     Apppublish.collectionname = collectionname;
-                    Apppublish.Connectionbroker = collectionbroker;
+                    Apppublish.Connectionbroker = connectionbroker;
                     
                     ApppublishService.Update(Apppublish);
                     ShowSuccessMessage("Script Generated. Click to download.");
@@ -134,7 +134,7 @@ namespace Portal.App.Remotedesktopservices
                     txtDisplayname.Text = Apppublish.Displayname;
                     txtcollectionname.Text = Apppublish.collectionname;
                     txtConnectionbroker.Text = Apppublish.Connectionbroker;
-                    txtFilepath.Text = Apppublish.Connectionbroker;
+                    txtFilepath.Text = Apppublish.Filepath;
                     
                 }
             }
@@ -149,7 +149,7 @@ namespace Portal.App.Remotedesktopservices
         public int EditApppublishId { get; set; }
 
        
-        private bool CreatePSIFile(string Alias, string Displayname, string Filepath, string collectionname, string collectionbroker)
+        private bool CreatePSIFile(string Alias, string Displayname, string Filepath, string collectionname, string connectionbroker)
         {
             bool returnResult = false;
            // string folderName = ConfigurationManager.ConnectionStrings["PSIFilePath"].ToString();
@@ -167,16 +167,20 @@ namespace Portal.App.Remotedesktopservices
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to Publish application through Remote Desktop Services");
+                    writer.WriteLine("This script should be executed on the Session Host server where the application will be hosted");
+                    writer.WriteLine("File path should contain the location of .exe file of the application to be published");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+Alias);
-                    writer.WriteLine("$physicaladapter="+collectionbroker);
-                    writer.WriteLine("$allowmos="+collectionname);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("import-module RemoteDesktop");
+                    writer.WriteLine("$Alias=" + Alias);
+                    writer.WriteLine("$Displayname=" + Displayname);
+                    writer.WriteLine("$Connectionbroker=" + connectionbroker);
+                    writer.WriteLine("$Collectionname=" + collectionname);
+                    writer.WriteLine("$Filepath=" + Filepath);
+                    writer.WriteLine("new-rdremoteapp -Alias $Alias -DisplayName $Displayname -FilePath $Filepath -ShowInWebAccess 1 -collectionname $Collectionname -ConnectionBroker $Connectionbroker");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

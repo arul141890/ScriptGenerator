@@ -137,16 +137,18 @@ namespace Portal.App.Webserver
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to create install webserver IIS");
+                    writer.WriteLine("IIS installation include all sub features and management tools");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
-                    writer.WriteLine("set-executionpolicy unrestricted");
-                    writer.WriteLine("#>");
+                    writer.WriteLine("set-executionpolicy unrestricted #>");
+                    writer.WriteLine("$hostname="+Hostname);
+                    writer.WriteLine("<# Enter the server session #>");
+                    writer.WriteLine("New - PSSession –Name IISinstallation –ComputerName $hostname");
+                    writer.WriteLine("Enter - PSSession –Name IISinstallation");
+                    writer.WriteLine("<# Import server manager module #>");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname=" + Ipaddress);
-                    writer.WriteLine("$physicaladapter=" + Hostname);
-                    writer.WriteLine("$allowmos=" );
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("<# Install web server role with all sub features and also includes management tools #>");
+                    writer.WriteLine("add-windowsfeature web-server -includeallsubfeature -includeManagementTools");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

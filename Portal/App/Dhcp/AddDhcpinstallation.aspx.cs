@@ -28,8 +28,38 @@ namespace Portal.App.Dhcp
             var authorize = DDAuthorize.SelectedItem.Text;
             var hostname = txtHostname.Text.Trim();
             var ipaddress = txtIpaddress.Text.Trim();
-                        
-            // Switch Name validation
+
+            // DHCP parameters validation
+            if (isstaticip == "--SELECT--")
+            {
+                this.ShowErrorMessage("Please confirm if server has static IP Address");
+                return;
+            }
+
+            if (isstaticip == "False")
+            {
+                this.ShowErrorMessage("DHCP Server should have static IP Address");
+                return;
+            }
+
+            if (joindomain == "--SELECT--")
+            {
+                this.ShowErrorMessage("Please confirm if server is joined to domain");
+                return;
+            }
+
+            if (joindomain == "False")
+            {
+                this.ShowErrorMessage("DHCP Server should should be joined to domain");
+                return;
+            }
+
+            if (authorize == "--SELECT--")
+            {
+                this.ShowErrorMessage("Please confirm if DHCP server needs to be authorized");
+                return;
+            }
+            
             if (string.IsNullOrWhiteSpace(hostname))
             {
                 this.ShowErrorMessage("Please enter Hostname.");
@@ -65,9 +95,9 @@ namespace Portal.App.Dhcp
 
                     DhcpinstallationService.Create(clientUser);
                     ShowSuccessMessage("Script Generated. Click to download.");
-                    DDStaticIP.SelectedValue = DropdownDefaultText;
-                    DDDomainjoined.SelectedValue = DropdownDefaultText;
-                    DDAuthorize.SelectedValue = DropdownDefaultText;
+                    DDStaticIP.SelectedItem.Text = DropdownDefaultText;
+                    DDDomainjoined.SelectedItem.Text = DropdownDefaultText;
+                    DDAuthorize.SelectedItem.Text = DropdownDefaultText;
                     txtHostname.Text = string.Empty;
                     txtIpaddress.Text = string.Empty;
                     
@@ -98,10 +128,6 @@ namespace Portal.App.Dhcp
         protected void Page_Init(object sender, EventArgs e)
         {
             HideLabels();
-            // Add this to show default --SELECT-- option for drop down
-            DDStaticIP.Items.Insert(0, DropdownDefaultText);
-            DDAuthorize.Items.Insert(0, DropdownDefaultText);
-            DDDomainjoined.Items.Insert(0, DropdownDefaultText);
             try
             {
                 EditDhcpinstallationId = Convert.ToInt32(Request.QueryString["vscId"]);
@@ -155,12 +181,17 @@ namespace Portal.App.Dhcp
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to Install DHCP Server");
+                    writer.WriteLine("DHCP server should have a static IP Address");
+                    writer.WriteLine("DHCP server should be joined to domain and authorized to issue IP Addresses to the clients.");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
+                    writer.WriteLine("$Hostname=" + hostname);
+                    writer.WriteLine("<# Enter the remote session of the server#>");
+                    writer.WriteLine("New-PSSession –Name DHCPinstall –ComputerName $Hostname");
+                    writer.WriteLine("Enter-PSSession –Name DHCPinstall");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
                     writer.WriteLine("$switchname="+isstaticip);
                     writer.WriteLine("$physicaladapter="+joindomain);
                     writer.WriteLine("$allowmos="+authorize);

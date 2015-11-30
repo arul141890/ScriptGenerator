@@ -13,10 +13,10 @@
         </p>
         <ul>
             <li><span class="label">IPAddress:</span>
-                <asp:TextBox ID="txtIPAddress" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtIPAddress" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
             <li><span class="label">HostName:</span>
-                <asp:TextBox ID="txthostname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txthostname" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
         </ul>
         <p class="error">

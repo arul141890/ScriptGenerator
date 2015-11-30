@@ -165,16 +165,21 @@ namespace Portal.App.Remotedesktopservices
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to deploy Remote Desktop Services");
+                    writer.WriteLine("Remote Desktop Services Infrastructure servers should have a static IP Address");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+Connectionbroker);
-                    writer.WriteLine("$physicaladapter="+Webaccessserver);
-                    writer.WriteLine("$allowmos="+Sessionhost);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("import-module RemoteDesktop");
+                    writer.WriteLine("$Connectionbroker="+Connectionbroker);
+                    writer.WriteLine("$Webaccess="+Webaccessserver);
+                    writer.WriteLine("$Sessionhost="+Sessionhost);
+                    writer.WriteLine("$Gateway=" + Gatewayserver);
+                    writer.WriteLine("$GatewayFQDN=" + Gatewayfqdn);
+                    writer.WriteLine("New-SessionDeployment -ConnectionBroker $Connectionbroker -WebAccessServer $Webaccess -SessionHost $Sessionhost");
+                    writer.WriteLine("<# Specify Gateway and Website FQDN#>");
+                    writer.WriteLine("Set-RDDeploymentGatewayConfiguration -GatewayMode Custom -GatewayExternalFqdn $GatewayFQDN -LogonMethod Password -UseCachedCredentials $True -BypassLocal $True -ConnectionBroker $Connectionbroker");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

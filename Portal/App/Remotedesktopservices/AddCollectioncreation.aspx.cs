@@ -157,16 +157,19 @@ namespace Portal.App.Remotedesktopservices
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to create Remote Desktop Services Application Colection");
+                    writer.WriteLine("Remote Desktop Services infrastructure servers should have static IP Address");
+                    writer.WriteLine("Publish Applications once the collection is created");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+Collectionname);
-                    writer.WriteLine("$physicaladapter="+Sessionhost);
-                    writer.WriteLine("$allowmos="+Collectiondescription);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("import-module RemoteDesktop");
+                    writer.WriteLine("$Collectioname="+Collectionname);
+                    writer.WriteLine("$Collectiondesc="+Collectiondescription);
+                    writer.WriteLine("$connectionbroker="+Connectionbroker);
+                    writer.WriteLine("$Sessionhost=" + Sessionhost);
+                    writer.WriteLine("New-RDSessionCollection -CollectionName $Collectioname -SessionHost $Sessionhost -CollectionDescription $Collectiondesc -ConnectionBroker $connectionbroker");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

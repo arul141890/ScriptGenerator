@@ -25,8 +25,20 @@ namespace Portal.App.Dns
             var isstaticip = DDStaticIP.SelectedItem.Text;
             var hostname = txtHostname.Text.Trim();
             var Ipaddress = txtIpaddress.Text.Trim();
-            
+
             // Switch Name validation
+            if (isstaticip == "--SELECT--")
+            {
+                this.ShowErrorMessage("Please confirm if server has static IP Address");
+                return;
+            }
+
+            if (isstaticip == "False")
+            {
+                this.ShowErrorMessage("DNS Server should have static IP Address");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(hostname))
             {
                 this.ShowErrorMessage("Please enter Hostname.");
@@ -40,6 +52,7 @@ namespace Portal.App.Dns
             }
 
 
+             
 
             try
             {
@@ -61,7 +74,7 @@ namespace Portal.App.Dns
                     DnsinstallationService.Create(clientUser);
                     ShowSuccessMessage("Script Generated. Click to download.");
 
-                    DDStaticIP.SelectedValue = DropdownDefaultText;
+                    DDStaticIP.SelectedItem.Text= DropdownDefaultText;
                     txtHostname.Text = string.Empty;
                     txtIpaddress.Text = string.Empty;
                 }
@@ -140,16 +153,18 @@ namespace Portal.App.Dns
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to Install DNS Server");
+                    writer.WriteLine("DNS Server should have a static IP address");
+                    writer.WriteLine("Install DNS Server before installing Active Directory server in windows 2012 R2 Environment");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
+                    writer.WriteLine("$Hostname=" + hostname);
+                    writer.WriteLine("<# Enter the remote session of the server#>");
+                    writer.WriteLine("New-PSSession –Name DNSinstall –ComputerName $Hostname");
+                    writer.WriteLine("Enter-PSSession –Name DNSinstall");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+isstaticip);
-                    writer.WriteLine("$physicaladapter="+hostname);
-                    writer.WriteLine("$allowmos="+Ipaddress);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("Add-WindowsFeature -IncludeManagementTools -name dns -IncludeAllSubFeature");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

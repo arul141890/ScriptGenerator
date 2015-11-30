@@ -40,6 +40,13 @@ namespace Portal.App.Activedirectory
                 return;
             }
 
+            if(Critreplica == "--SELECT--")
+            {
+                this.ShowErrorMessage("Please select a value for critical replication");
+                return;
+            }
+
+
             if (string.IsNullOrWhiteSpace(Ipaddress))
             {
                 this.ShowErrorMessage("Please enter IP Address.");
@@ -52,11 +59,7 @@ namespace Portal.App.Activedirectory
                 return;
             }
 
-            if (Critreplica == "--SELECT--")
-            {
-                this.ShowErrorMessage("Please select an option.");
-            }
-
+            
             if (string.IsNullOrWhiteSpace(delegatedadminacc))
             {
                 this.ShowErrorMessage("Please enter admin account that can be delegated control.");
@@ -77,7 +80,8 @@ namespace Portal.App.Activedirectory
 
             if (InstallDNS == "--SELECT--")
             {
-                this.ShowErrorMessage("Please select an option.");
+                this.ShowErrorMessage("Please select an option for DNS Installation");
+                return;
             }
 
             if (string.IsNullOrWhiteSpace(SiteName))

@@ -28,8 +28,8 @@
             </li>
                <li><span class="label">Authorize this DHCP:</span>
                 <asp:DropDownList ID="DDAuthorize" runat="server">
-                    <asp:ListItem>--SELECT--</asp:ListItem>
-                    <asp:ListItem Selected="True">True</asp:ListItem>
+                    <asp:ListItem Selected="True">--SELECT--</asp:ListItem>
+                    <asp:ListItem>True</asp:ListItem>
                     <asp:ListItem>False</asp:ListItem>
                 </asp:DropDownList>
             </li>

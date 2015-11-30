@@ -54,7 +54,7 @@ namespace Portal.App.Dns
             try
             {
                 //Call PSI file creater Method:
-                CreatePSIFile(Hostname, Ipaddress, Zonename, Csvfilename );
+                CreatePSIFile(Hostname, Ipaddress, Zonename, Csvfilename);
                
                 
                 if (0 == EditDnsrecordcreationId)
@@ -153,16 +153,20 @@ namespace Portal.App.Dns
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to create multiple A records creation");
+                    writer.WriteLine("CSV file name should contain the complete path to the CSV file");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
+                    writer.WriteLine("$Hostname=" + Hostname);
+                    writer.WriteLine("<# Enter the remote session of the server#>");
+                    writer.WriteLine("New-PSSession –Name DNSrecord –ComputerName $Hostname");
+                    writer.WriteLine("Enter-PSSession –Name DNSrecord");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+Hostname);
-                    writer.WriteLine("$physicaladapter="+Ipaddress);
-                    writer.WriteLine("$allowmos="+Csvfilename);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("Import-Module DNSShell");
+                    writer.WriteLine("$Zonename="+Zonename);
+                    writer.WriteLine("$Csvfilename=" + Csvfilename);
+                    @writer.WriteLine(@"Import-CSV $Csvfilename | %{New -DNSRecord -Name $_.""HostName"" - RecordType A - ZoneName $Zonename - IPAddress $_.""IPAddr""}");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

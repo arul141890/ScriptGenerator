@@ -13,19 +13,19 @@
         </p>
         <ul>
             <li><span class="label">Connection Broker FQDN:</span>
-                <asp:TextBox ID="txtConnectionbroker" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtConnectionbroker" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
             <li><span class="label">Web Access Server FQDN:</span>
-                <asp:TextBox ID="txtWebaccessserver" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtWebaccessserver" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
             <li><span class="label">Session Host FQDN:</span>
-                <asp:TextBox ID="txtSessionhost" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtSessionhost" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
                 <li><span class="label">Gateway Server FQDN:</span>
-                <asp:TextBox ID="txtGatewayserver" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtGatewayserver" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
             <li><span class="label">Website FQDN:</span>
-                <asp:TextBox ID="txtGatewayfqdn" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtGatewayfqdn" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
         </ul>
         <p class="error">

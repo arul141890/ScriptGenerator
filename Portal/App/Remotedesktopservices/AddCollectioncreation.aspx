@@ -13,16 +13,16 @@
         </p>
         <ul>
             <li><span class="label">Collection Name:</span>
-                <asp:TextBox ID="txtCollectionname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtCollectionname" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
              <li><span class="label">Collection Description:</span>
-                <asp:TextBox ID="txtCollectiondescription" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtCollectiondescription" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
             <li><span class="label">Session host server:</span>
-                <asp:TextBox ID="txtSessionhost" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtSessionhost" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
             <li><span class="label">Connection Broker Server:</span>
-                <asp:TextBox ID="txtConnectionbroker" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtConnectionbroker" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
         </ul>
         <p class="error">

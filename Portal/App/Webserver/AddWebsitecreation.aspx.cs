@@ -25,7 +25,6 @@ namespace Portal.App.Webserver
             var apppoolname = txtapppool.Text.Trim();
             var website = this.txtwebsite.Text.Trim();
             var Portnumber = this.txtportnumber.Text.Trim();
-            var Dnsname = this.Txtdnsname.Text.Trim();
             var Physicalpath = this.Txtphysicalpath.Text.Trim();
 
             // Website Parameters validation
@@ -46,20 +45,17 @@ namespace Portal.App.Webserver
                 this.ShowErrorMessage("Please enter Port number.");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(Dnsname))
-            {
-                this.ShowErrorMessage("Please enter DNS Server name.");
-                return;
-            }
+           
             if(string.IsNullOrWhiteSpace(Physicalpath))
             {
                 this.ShowErrorMessage("Please enter Physical path of the website");
+                return;
             }
 
             try
             {
                 //Call PSI file creater Method:
-                CreatePSIFile(apppoolname, website, Portnumber, Dnsname, Physicalpath);
+                CreatePSIFile(apppoolname, website, Portnumber, Physicalpath);
                
                 
                 if (0 == EditwebsiteCreationId)
@@ -71,7 +67,6 @@ namespace Portal.App.Webserver
                         Apppoolname=apppoolname,
                         Websitename=website,
                         Portnumber=Portnumber,
-                        Websitednsname=Dnsname,
                         Physicalpath=Physicalpath
                     };
 
@@ -80,16 +75,13 @@ namespace Portal.App.Webserver
                     txtapppool.Text = string.Empty;
                     txtwebsite.Text = string.Empty;
                     txtportnumber.Text = string.Empty;
-                    Txtdnsname.Text = string.Empty;
                     Txtphysicalpath.Text = string.Empty;
                 }
                 else
                 {
                     var WebsiteCreation = WebsitecreationService.Retrieve(EditwebsiteCreationId);
                     WebsiteCreation.Apppoolname = apppoolname;
-                    WebsiteCreation.Websitednsname = website;
                     WebsiteCreation.Portnumber = Portnumber;
-                    WebsiteCreation.Websitednsname = Dnsname;
                     WebsiteCreation.Physicalpath = Physicalpath;
 
                     WebsitecreationService.Update(WebsiteCreation);
@@ -128,7 +120,6 @@ namespace Portal.App.Webserver
                     lblTitle.Text = "Edit Website Parameters"; // change caption
                     txtapppool.Text = WebsiteCreation.Apppoolname;
                     txtwebsite.Text = WebsiteCreation.Websitename;
-                    Txtdnsname.Text = WebsiteCreation.Websitednsname;
                     txtportnumber.Text = WebsiteCreation.Portnumber;
                     Txtphysicalpath.Text = WebsiteCreation.Physicalpath;
                     
@@ -145,7 +136,7 @@ namespace Portal.App.Webserver
         public int EditwebsiteCreationId { get; set; }
 
        
-        private bool CreatePSIFile(string apppoolname,string website,string Portnumber,string Dnsname,string Physicalpath)
+        private bool CreatePSIFile(string apppoolname,string website,string Portnumber,string Physicalpath)
         {
             bool returnResult = false;
            // string folderName = ConfigurationManager.ConnectionStrings["PSIFilePath"].ToString();
@@ -163,16 +154,20 @@ namespace Portal.App.Webserver
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to create a website");
+                    writer.WriteLine("This script needs to be executed on a server where website is to be hosted");
+                    writer.WriteLine("The Physical path of the code specified should exist before executing this script");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+apppoolname);
-                    writer.WriteLine("$physicaladapter="+website);
-                    writer.WriteLine("$allowmos="+Portnumber);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("Import-Module WebAdministration");
+                    writer.WriteLine("$Apppool=" + apppoolname);
+                    writer.WriteLine("$Website=" + website);
+                    writer.WriteLine("$Portnumber=" + Portnumber);
+                    writer.WriteLine("$Physicalpath="+ Physicalpath);
+                    writer.WriteLine("New-WebAppPool $Apppool -force");
+                    writer.WriteLine("new-website -name $Website -port $Portnumber -Physicalpath $Physicalpath -ApplicationPool $Apppool");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

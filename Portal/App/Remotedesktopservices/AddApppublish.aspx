@@ -13,19 +13,19 @@
         </p>
         <ul>
             <li><span class="label">Application Alias Name:</span>
-                <asp:TextBox ID="txtAlias" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtAlias" ClientIDMode="Static" runat="server" MaxLength="15"></asp:TextBox>
             </li>
             <li><span class="label">Application Displayname:</span>
-                <asp:TextBox ID="txtDisplayname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtDisplayname" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
             <li><span class="label">App Executable path:</span>
-                <asp:TextBox ID="txtFilepath" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtFilepath" ClientIDMode="Static" runat="server" MaxLength="100"></asp:TextBox>
             </li>
             <li><span class="label">Collection Name:</span>
-                <asp:TextBox ID="txtcollectionname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtcollectionname" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
             <li><span class="label">RDS Connection Broker:</span>
-                <asp:TextBox ID="txtConnectionbroker" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtConnectionbroker" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
         </ul>
         <p class="error">

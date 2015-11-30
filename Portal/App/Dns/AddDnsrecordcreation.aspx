@@ -13,16 +13,16 @@
         </p>
         <ul>
             <li><span class="label">DNS Server Name:</span>
-                <asp:TextBox ID="txtHostname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtHostname" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
             <li><span class="label">IP Address:</span>
-                <asp:TextBox ID="txtIpaddress" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtIpaddress" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
             <li><span class="label">Zone Name:</span>
-                <asp:TextBox ID="txtZonename" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtZonename" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
              <li><span class="label">CSV File Name:</span>
-                <asp:TextBox ID="txtCsvfilename" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtCsvfilename" ClientIDMode="Static" runat="server" MaxLength="100"></asp:TextBox>
             </li>
         </ul>
         <p class="error">
