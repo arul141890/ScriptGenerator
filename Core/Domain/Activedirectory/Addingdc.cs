@@ -14,6 +14,5 @@
 
         public string Sysvolpath { get; set; }
 
-        public string Safemodeadminpassword { get; set; }
-    }
+     }
 }

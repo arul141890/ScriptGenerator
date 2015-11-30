@@ -83,8 +83,10 @@
     <Compile Include="Remotedesktopservices\CollectioncreationService.cs" />
     <Compile Include="Remotedesktopservices\RdsinstallationService.cs" />
     <Compile Include="ScriptGeneratorService.cs" />
+    <Compile Include="Users\IChangepassword.cs" />
     <Compile Include="Users\IRegisterService.cs" />
     <Compile Include="Users\IUserService.cs" />
+    <Compile Include="Users\Changepassword.cs" />
     <Compile Include="Users\RegisterService.cs" />
     <Compile Include="Users\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

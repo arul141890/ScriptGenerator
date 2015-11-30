@@ -36,7 +36,7 @@ namespace Portal.App.HyperV
             this.HideLabels();
             var VHDPath = txtvhdpath.Text.Trim();
             var VHDSize = txtVHDSize.Text.Trim();
-           var VHDType = DDdisktype.SelectedItem.Text.ToLower();
+           var VHDType = DDdisktype.SelectedItem.Text;
             var ParentPath = txtParentPath.Text.Trim();
 
             // Virtual Disk PArameters validation
@@ -58,6 +58,15 @@ namespace Portal.App.HyperV
                 this.ShowErrorMessage("Please select disk type.");
             }
             
+            if(VHDType=="--SELECT--")
+            {
+                this.ShowErrorMessage("please select disk type");
+            }
+
+            if (string.IsNullOrWhiteSpace(ParentPath))
+            {
+                this.ShowErrorMessage("please enter Parent path");
+            }
 
             try
             {

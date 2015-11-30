@@ -27,7 +27,7 @@ namespace Portal.App.Activedirectory
             var DatabasePath = this.txtdbpath.Text.Trim();
             var LogPath = this.txtlogpath.Text.Trim();
             var Sysvolpath = this.txtsysvol.Text.Trim();
-            var safemodeadminpassword = this.txtsafemodepwd.Text.Md5();
+            var safemodeadminpassword = this.txtsafemodepwd.Text.Trim();
                         
             // DC Parameters validation
             if (string.IsNullOrWhiteSpace(Hostname))
@@ -89,8 +89,7 @@ namespace Portal.App.Activedirectory
                         Databasepath = DatabasePath,
                         Logpath=LogPath,
                         Sysvolpath=Sysvolpath,
-                        Safemodeadminpassword=safemodeadminpassword
-                    };
+                     };
 
                     AddingdcCreationService.Create(clientUser);
                     ShowSuccessMessage("Script Generated. Click to download.");
@@ -111,8 +110,7 @@ namespace Portal.App.Activedirectory
                     Adddc.Databasepath = DatabasePath;
                     Adddc.Logpath = LogPath;
                     Adddc.Sysvolpath = Sysvolpath;
-                    Adddc.Safemodeadminpassword = safemodeadminpassword;
-
+                    
                     AddingdcCreationService.Update(Adddc);
                     ShowSuccessMessage("Script Generated. Click to download.");
                 }
@@ -153,7 +151,7 @@ namespace Portal.App.Activedirectory
                     txtdbpath.Text = Adddc.Databasepath;
                     txtlogpath.Text = Adddc.Logpath;
                     txtsysvol.Text = Adddc.Sysvolpath;
-                    txtsafemodepwd.Text = Adddc.Safemodeadminpassword;
+                    txtsafemodepwd.Text = "";
                     
                 }
             }

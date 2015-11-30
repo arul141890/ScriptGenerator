@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Portal.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Changepassword.aspx.cs" Inherits="Portal.Register" %>
 
 <!DOCTYPE html>
 
@@ -71,42 +71,33 @@
             <div>
                 <div class="loginbox">
                     <div class="header">
-                        <span>Registration Form</span>
+                        <span>change Password</span>
                     </div>
                     <div class="content">
                         <ul>
-                            <li>Email ID</li>
+                            
+                            <li>Current Password</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtemail" />
+                                <asp:TextBox runat="server" ID="txtOldPassword" TextMode="Password" />
                             </li>
-                            <li>User Name</li>
+                            <li>New Password</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtUserId" />
+                                <asp:TextBox runat="server" ID="txtNewPassword" TextMode="Password" />
                             </li>
-                            <li>Password</li>
+                            <li></li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" />
-                            </li>
-                            <li>Confirm Password</li>
-                            <li>
-                                <asp:TextBox runat="server" ID="txtPasswordconfirm" TextMode="Password" />
-                            </li>
-                            <li>
-                                <asp:Button Text="Login" ID="Button1" runat="server" OnClick="BtnLogin" />
-                            </li>
-                            <li>
-                                <asp:Button Text="Register" ID="btnRegister" runat="server" OnClick="BtnRegisterClick" />
+                                <asp:Button Text="Submit" ID="BtnChangepwd" runat="server" OnClick="Btnchange" />
                             </li>
                         </ul>
                     </div>
 
                        <p class="error">
-            <asp:Label runat="server" ID="lblErrorMessage" Visible="False"></asp:Label>
-        </p>
+                       <asp:Label runat="server" ID="lblErrorMessage" Visible="False"></asp:Label>
+                       </p>
 
-        <p class="success">
-            <asp:Label runat="server" ID="lblSuccessMessage" Visible="False"></asp:Label>
-        </p>
+                       <p class="success">
+                       <asp:Label runat="server" ID="lblSuccessMessage" Visible="False"></asp:Label>
+                       </p>
 
                     
                 </div>

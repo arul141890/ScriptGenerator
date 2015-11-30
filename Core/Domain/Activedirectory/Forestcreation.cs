@@ -19,8 +19,6 @@
         public string Logpath { get; set; }
 
         public string Sysvolpath { get; set; }
-
-        public string safemodeadministratorpassword { get; set; }
         
     }
 }

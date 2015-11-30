@@ -31,7 +31,7 @@ namespace Portal.App.Activedirectory
             var Forestmode = DDforestmode.SelectedItem.Text;
             var Logpath = txtlogpath.Text.Trim();
             var Sysvolpath = txtsysvol.Text.Trim();
-            var safemodeadminpwd = txtsafemodepwd.Text.Md5();
+            var safemodeadminpwd = txtsafemodepwd.Text.Trim();
             
             // Switch Name validation
             if (string.IsNullOrWhiteSpace(Hostname))
@@ -113,9 +113,8 @@ namespace Portal.App.Activedirectory
                         Domainnetbiosname=Domainnetbiosname,
                         Forestmode=Forestmode,
                         Logpath=Logpath,
-                        Sysvolpath=Sysvolpath,
-                        safemodeadministratorpassword=safemodeadminpwd
-                        
+                        Sysvolpath=Sysvolpath
+                                                
                     };
 
                     ForestCreationService.Create(clientUser);
@@ -144,8 +143,7 @@ namespace Portal.App.Activedirectory
                     ForestCreation.Forestmode = Forestmode;
                     ForestCreation.Logpath = Logpath;
                     ForestCreation.Sysvolpath = Sysvolpath;
-                    ForestCreation.safemodeadministratorpassword = safemodeadminpwd;
-                                        
+                                                            
                     ForestCreationService.Update(ForestCreation);
                     ShowSuccessMessage("Script Generated. Click to download.");
                 }
@@ -187,7 +185,7 @@ namespace Portal.App.Activedirectory
                     txtnetbios.Text = ForestCreation.Domainnetbiosname;
                     txtlogpath.Text = ForestCreation.Logpath;
                     txtsysvol.Text = ForestCreation.Sysvolpath;
-                    txtsafemodepwd.Text = ForestCreation.safemodeadministratorpassword;
+                    txtsafemodepwd.Text = "";
                     DDdomainmode.SelectedItem.Value = ForestCreation.Domainmode;
                     DDforestmode.SelectedItem.Value = ForestCreation.Forestmode;
                  }

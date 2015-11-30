@@ -28,7 +28,7 @@ namespace Portal
 
         protected void BtnRegisterClick(object sender, EventArgs e)
         {
-            lblRegisterError.Text = "";
+            lblErrorMessage.Text = "";
             this.HideLabels();
             var Email = txtemail.Text.Trim();
             var Userid = txtUserId.Text.Trim();

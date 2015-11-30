@@ -5,7 +5,7 @@ set-executionpolicy unrestricted
 #>
 Import-Module ServerManager
 Import-Module Hyper-V
-$switchname=test1
-$physicaladapter=tres2
-$allowmos=False
+$switchname=
+$physicaladapter=
+$allowmos=
 New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos
