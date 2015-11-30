@@ -13,16 +13,16 @@
         </p>
         <ul>
             <li><span class="label">DFS Server Name:</span>
-                <asp:TextBox ID="txtDfsservername" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtDfsservername" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
-            <li><span class="label">DFS Path:</span>
-                <asp:TextBox ID="txtDfspath" ClientIDMode="Static" runat="server"></asp:TextBox>
+            <li><span class="label">SMB Share Name:</span>
+                <asp:TextBox ID="txtsmbname" ClientIDMode="Static" runat="server" MaxLength="90"></asp:TextBox>
             </li>
             <li><span class="label">File Server Name:</span>
-                <asp:TextBox ID="txtFileservername" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtFileservername" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
-            <li><span class="label">Namespace Target Path:</span>
-                <asp:TextBox ID="txtTargetpath" ClientIDMode="Static" runat="server"></asp:TextBox>
+            <li><span class="label">Domain Name:</span>
+                <asp:TextBox ID="txtDomain" ClientIDMode="Static" runat="server" MaxLength="90"></asp:TextBox>
             </li>
         </ul>
         <p class="error">

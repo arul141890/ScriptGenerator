@@ -192,10 +192,13 @@ namespace Portal.App.Dhcp
                     writer.WriteLine("New-PSSession –Name DHCPinstall –ComputerName $Hostname");
                     writer.WriteLine("Enter-PSSession –Name DHCPinstall");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("$switchname="+isstaticip);
-                    writer.WriteLine("$physicaladapter="+joindomain);
-                    writer.WriteLine("$allowmos="+authorize);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("$IPAddress=" + ipaddress);
+                    writer.WriteLine("Add-WindowsFeature -IncludeManagementTools dhcp");
+                    writer.WriteLine("netsh dhcp add securitygroups");
+                    writer.WriteLine("Restart-service dhcpserver");
+                    writer.WriteLine("$authorize=" + authorize);
+                    @writer.WriteLine(@"if($authorize -eq ""True""){Add-DhcpServerInDC  $Hostname  $IPAddress}");
+                    @writer.WriteLine(@"Set-ItemProperty –Path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ServerManager\Roles\12 –Name ConfigurationState –Value 2");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

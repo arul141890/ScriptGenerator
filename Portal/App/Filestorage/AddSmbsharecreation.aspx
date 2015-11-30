@@ -13,20 +13,14 @@
         </p>
         <ul>
             <li><span class="label">SMB Directory:</span>
-                <asp:TextBox ID="txtDirectoryname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtDirectoryname" ClientIDMode="Static" runat="server" MaxLength="90"></asp:TextBox>
             </li>
             <li><span class="label">SMB Share Name:</span>
-                <asp:TextBox ID="txtSmbname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtSmbname" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
-             <li><span class="label">Encyptdata:</span>
-                <asp:DropDownList ID="DDEncyptdata" runat="server">
-                    <asp:ListItem Selected="True">--SELECT--</asp:ListItem>
-                    <asp:ListItem>True</asp:ListItem>
-                    <asp:ListItem>False</asp:ListItem>
-                </asp:DropDownList>
-            </li>
+             
             <li><span class="label">Specify Accessgroups:</span>
-                <asp:TextBox ID="txtAccessgroups" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtAccessgroups" ClientIDMode="Static" runat="server" MaxLength="90"></asp:TextBox>
             </li>
         </ul>
         <p class="error">

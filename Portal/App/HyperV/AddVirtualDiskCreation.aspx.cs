@@ -24,10 +24,12 @@ namespace Portal.App.HyperV
             if (Check == "Differencing Disk")
             {
                 txtParentPath.Enabled = true;
+                
             }
             else
             {
                 txtParentPath.Enabled = false;
+                
             }
         }
 
@@ -52,17 +54,13 @@ namespace Portal.App.HyperV
                 return;
             }
 
-            //correct definition for DD
-            if (VHDType=="--select--")
+                     
+            if (VHDType == "--SELECT--")
             {
-                this.ShowErrorMessage("Please select disk type.");
+                this.ShowErrorMessage("Please Select the disk type");
+                return;
             }
             
-            if(VHDType=="--SELECT--")
-            {
-                this.ShowErrorMessage("please select disk type");
-            }
-
             if (string.IsNullOrWhiteSpace(ParentPath))
             {
                 this.ShowErrorMessage("please enter Parent path");
@@ -170,16 +168,18 @@ namespace Portal.App.HyperV
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to Create Virtual Hard Disk");
+                    writer.WriteLine("This script should be executed on the Hyper-V server in which the virtual hard disk needs to be created");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname=" );
-                    writer.WriteLine("$physicaladapter=" );
-                    writer.WriteLine("$allowmos=");
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("Add-WindowsFeature RSAT-Hyper-V-Tools –IncludeAllSubFeature");
+                    writer.WriteLine("$VHDPath=" + VHDPath);
+                    writer.WriteLine("$VHDSize=" + VHDSize);
+                    writer.WriteLine("$Parentpath=" + ParentPath);
+                    writer.WriteLine("$VHDType=" + VHDType);
+                    @writer.WriteLine(@"if($VHDType -eq ""Differencing""){New-VHD –ParentPath ""$Parentpath"" –Path ""$VHDPath"" -Differencing –SizeBytes $VHDSizeGB} Else {New-VHD –Path ""$VHDPath"" –SizeBytes $VHDSizeGB -$VHDType}");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

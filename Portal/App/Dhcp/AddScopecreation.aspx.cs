@@ -145,16 +145,19 @@ namespace Portal.App.Dhcp
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to Install DNS Server");
+                    writer.WriteLine("DNS Server should have a static IP address");
+                    writer.WriteLine("Install DNS Server before installing Active Directory server in windows 2012 R2 Environment");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
+                    writer.WriteLine("$Hostname=" + Hostname);
+                    writer.WriteLine("<# Enter the remote session of the server#>");
+                    writer.WriteLine("New-PSSession –Name DNSinstall –ComputerName $Hostname");
+                    writer.WriteLine("Enter-PSSession –Name DNSinstall");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+Hostname);
-                    writer.WriteLine("$physicaladapter="+Ipaddress);
-                    writer.WriteLine("$allowmos="+Csvfile);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("$filename=" + Csvfile);
+                    @writer.WriteLine(@"Import-CSV $filename | %{Add-DhcpServerv4Scope -Name $_.""Name"" -StartRange $_.""StartRange"" -EndRange $_.""EndRange"" -SubnetMask $_.""SubnetMask""}");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

@@ -13,14 +13,15 @@
         </p>
         <ul>
             <li><span class="label">Switch Name:</span>
-                <asp:TextBox ID="txtSwitchName" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtSwitchName" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
             <li><span class="label">Physical Adapter:</span>
-                <asp:TextBox ID="txtAdapter" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtAdapter" ClientIDMode="Static" runat="server" MaxLength="30"></asp:TextBox>
             </li>
            <li><span class="label">Allow Management OS:</span>
-                <asp:DropDownList ID="AllowManagementOs" runat="server">
-                    <asp:ListItem Selected="True">False</asp:ListItem>
+                <asp:DropDownList ID="DDAllowManagementOs" runat="server">
+                     <asp:ListItem Selected="True">--SELECT--</asp:ListItem>
+                    <asp:ListItem>False</asp:ListItem>
                     <asp:ListItem>True</asp:ListItem>
                 </asp:DropDownList>
             </li>

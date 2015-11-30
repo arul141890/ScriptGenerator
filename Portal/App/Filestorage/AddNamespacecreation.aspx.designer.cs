@@ -31,13 +31,13 @@ namespace Portal.App.Filestorage {
         protected global::System.Web.UI.WebControls.TextBox txtDfsservername;
         
         /// <summary>
-        /// txtDfspath control.
+        /// txtsmbname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDfspath;
+        protected global::System.Web.UI.WebControls.TextBox txtsmbname;
         
         /// <summary>
         /// txtFileservername control.
@@ -49,13 +49,13 @@ namespace Portal.App.Filestorage {
         protected global::System.Web.UI.WebControls.TextBox txtFileservername;
         
         /// <summary>
-        /// txtTargetpath control.
+        /// txtDomain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTargetpath;
+        protected global::System.Web.UI.WebControls.TextBox txtDomain;
         
         /// <summary>
         /// lblErrorMessage control.

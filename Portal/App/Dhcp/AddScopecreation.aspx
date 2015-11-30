@@ -20,6 +20,7 @@
             </li>
             <li><span class="label">CSV Filename:</span>
                 <asp:TextBox ID="txtCsvfilename" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" Text="Label">CSV Columns{Name,StartRange,EndRange,SubnetMask}</asp:Label>
             </li>
         </ul>
         <p class="error">

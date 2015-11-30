@@ -24,7 +24,6 @@ namespace Portal.App.Filestorage
             this.HideLabels();
             var Directoryname = txtDirectoryname.Text.Trim();
             var Smbname = txtSmbname.Text.Trim();
-            var Encrypt = DDEncyptdata.SelectedItem.Text;
             var Accessgroup = txtAccessgroups.Text.Trim();
             
             // SMB parameters validation
@@ -46,10 +45,11 @@ namespace Portal.App.Filestorage
                 return;
             }
 
+            
             try
             {
                 //Call PSI file creater Method:
-                CreatePSIFile(Directoryname, Smbname, Encrypt, Accessgroup);
+                CreatePSIFile(Directoryname, Smbname, Accessgroup);
                
                 
                 if (0 == EditsmbsharecreationId)
@@ -60,7 +60,6 @@ namespace Portal.App.Filestorage
                         CreatedDate = DateTimeHelper.Now,
                         Directoryname = Directoryname,
                         Smbname = Smbname,
-                        Encyptdata = Encrypt,
                         Accessgroups = Accessgroup
                     };
 
@@ -68,7 +67,6 @@ namespace Portal.App.Filestorage
                     ShowSuccessMessage("Script Generated. Click to download.");
                     txtDirectoryname.Text = string.Empty;
                     txtSmbname.Text = string.Empty;
-                    DDEncyptdata.Text = DropdownDefaultText;
                     txtAccessgroups.Text = string.Empty;
                 }
                 else
@@ -76,7 +74,6 @@ namespace Portal.App.Filestorage
                     var SmbshareCreation = SmbsharecreationService.Retrieve(EditsmbsharecreationId);
                     SmbshareCreation.Directoryname = Directoryname;
                     SmbshareCreation.Smbname = Smbname;
-                    SmbshareCreation.Encyptdata = Encrypt;
                     SmbshareCreation.Accessgroups = Accessgroup;
 
                     SmbsharecreationService.Update(SmbshareCreation);
@@ -116,7 +113,7 @@ namespace Portal.App.Filestorage
                     txtDirectoryname.Text = SmbshareCreation.Directoryname;
                     txtSmbname.Text = SmbshareCreation.Smbname;
                     txtAccessgroups.Text = SmbshareCreation.Accessgroups;
-                    DDEncyptdata.SelectedValue = SmbshareCreation.Encyptdata;
+                   
                 }
             }
 
@@ -130,7 +127,7 @@ namespace Portal.App.Filestorage
         public int EditsmbsharecreationId { get; set; }
 
        
-        private bool CreatePSIFile(string Directoryname,string Smbname,string Encrypt,string Accessgroup)
+        private bool CreatePSIFile(string Directoryname,string Smbname,string Accessgroup)
         {
             bool returnResult = false;
            // string folderName = ConfigurationManager.ConnectionStrings["PSIFilePath"].ToString();
@@ -148,16 +145,17 @@ namespace Portal.App.Filestorage
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to create SMB share");
+                    writer.WriteLine("SMB share should be created first before proceeding with DFS namespace creation");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+Directoryname);
-                    writer.WriteLine("$physicaladapter="+Smbname);
-                    writer.WriteLine("$allowmos="+Encrypt);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("$Dirname="+Directoryname);
+                    writer.WriteLine("$smbname="+Smbname);
+                    writer.WriteLine("$accessgroup="+Accessgroup);
+                    @writer.WriteLine(@"icacls ""$Dirname"" /grant ""Authenticated Users"": (OI)(CI)(M)");
+                    @writer.WriteLine(@"New-SmbShare -Name $smbname -Path ""$Dirname"" -FolderEnumerationMode AccessBased -CachingMode Documents -EncryptData $True -FullAccess ""$accessgroup"" ");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

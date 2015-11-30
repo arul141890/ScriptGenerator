@@ -25,7 +25,7 @@ namespace Portal.App.HyperV
             bool returnResult = false;
             var switchName = txtSwitchName.Text.Trim();
             var adapter = this.txtAdapter.Text.Trim();
-            var allowManagementOs = this.AllowManagementOs.Text.Trim();
+            var allowManagementOs = DDAllowManagementOs.SelectedItem.Text;
             
             // Switch Name validation
             if (string.IsNullOrWhiteSpace(switchName))
@@ -40,7 +40,11 @@ namespace Portal.App.HyperV
                 return;
             }
 
-
+            if (allowManagementOs == "--SELECT--")
+            {
+                this.ShowErrorMessage("Please select an option for management OS.");
+                return;
+            }
 
             try
             {
@@ -63,7 +67,7 @@ namespace Portal.App.HyperV
                     ShowSuccessMessage("Script Generated. Click to download.");
 
                     txtAdapter.Text = string.Empty;
-                    AllowManagementOs.Text = string.Empty;
+                    DDAllowManagementOs.SelectedItem.Text = string.Empty;
                     txtSwitchName.Text = string.Empty;
                 }
                 else
@@ -108,7 +112,7 @@ namespace Portal.App.HyperV
                 {
                     lblTitle.Text = "Edit Vitual Switch"; // change caption
                     txtAdapter.Text = virtualSwitchCreation.PhysicalAdapter;
-                    AllowManagementOs.Text = virtualSwitchCreation.AllowManagementOs;
+                    DDAllowManagementOs.SelectedValue = virtualSwitchCreation.AllowManagementOs;
                     txtSwitchName.Text = virtualSwitchCreation.SwitchName;
                 }
             }

@@ -4,10 +4,10 @@
     {
         public string Dfsservername { get; set; }
 
-        public string Dfspath { get; set; }
+        public string Smbsharename { get; set; }
 
         public string Fileservername { get; set; }
 
-        public string Targetpath { get; set; }
+        public string Domainname { get; set; }
     }
 }

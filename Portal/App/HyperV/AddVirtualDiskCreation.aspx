@@ -13,21 +13,25 @@
         </p>
         <ul>
             <li><span class="label">VHDPath:</span>
-                <asp:TextBox ID="txtvhdpath" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtvhdpath" ClientIDMode="Static" runat="server" MaxLength="90"></asp:TextBox>
+                <asp:Label ID="Label2" runat="server" Text="Label">Eg: "C:\test\testvhd.vhdx"</asp:Label>
             </li>
             <li><span class="label">Virtual Disk Size:</span>
-                <asp:TextBox ID="txtVHDSize" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtVHDSize" ClientIDMode="Static" runat="server" MaxLength="10"></asp:TextBox>
+                <asp:Label ID="Label3" runat="server" Text="Label">Values are in GigaBytes. </asp:Label>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="txtVHDSize" runat="server" ErrorMessage="Only Numbers allowed" ValidationExpression="\d+"></asp:RegularExpressionValidator>
             </li>
              <li><span class="label">Disk Type:</span>
                 <asp:DropDownList ID="DDdisktype" runat="server" AutoPostBack="true" OnTextChanged="disktypeDD_SelectedIndexChanged">
                     <asp:ListItem Selected="True">--SELECT--</asp:ListItem>
-                    <asp:ListItem>Fixed Disk</asp:ListItem>
-                    <asp:ListItem>Dynamic Disk</asp:ListItem>
-                    <asp:ListItem>Differencing Disk</asp:ListItem>
+                    <asp:ListItem>Fixed</asp:ListItem>
+                    <asp:ListItem>Dynamic</asp:ListItem>
+                    <asp:ListItem>Differencing</asp:ListItem>
                 </asp:DropDownList>
             </li>
             <li><span class="label">Parent VHD Path:</span>
-                <asp:TextBox ID="txtParentPath" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtParentPath" ClientIDMode="Static" runat="server" MaxLength="90"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" Text="Label">Eg: "C:\test\testvhd.vhdx"</asp:Label>
             </li>
             </ul>
         <ul>

@@ -23,9 +23,9 @@ namespace Portal.App.Filestorage
         {
             this.HideLabels();
             var Dfsservername = txtDfsservername.Text.Trim();
-            var DFSpath = txtDfspath.Text.Trim();
+            var Smbsharename = txtsmbname.Text.Trim();
             var Fileservername = txtFileservername.Text.Trim();
-            var namespacetargetpath = txtTargetpath.Text.Trim();
+            var Domainname = txtDomain.Text.Trim();
                         
             // Switch Name validation
             if (string.IsNullOrWhiteSpace(Dfsservername))
@@ -34,9 +34,9 @@ namespace Portal.App.Filestorage
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(DFSpath))
+            if (string.IsNullOrWhiteSpace(Smbsharename))
             {
-                this.ShowErrorMessage("Please enter DFS Path.");
+                this.ShowErrorMessage("Please enter SMB Share name.");
                 return;
             }
 
@@ -46,16 +46,16 @@ namespace Portal.App.Filestorage
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(namespacetargetpath))
+            if (string.IsNullOrWhiteSpace(Domainname))
             {
-                this.ShowErrorMessage("Please enter Target path.");
+                this.ShowErrorMessage("Please enter Domain Name.");
                 return;
             }
 
             try
             {
                 //Call PSI file creater Method:
-                CreatePSIFile(Dfsservername, DFSpath, Fileservername, namespacetargetpath);
+                CreatePSIFile(Dfsservername, Smbsharename, Fileservername, Domainname);
                
                 
                 if (0 == EditNamespaceCreationId)
@@ -65,9 +65,9 @@ namespace Portal.App.Filestorage
                         CreatedBy = Context.User.Identity.Name,
                         CreatedDate = DateTimeHelper.Now,
                         Dfsservername = Dfsservername,
-                        Dfspath = DFSpath,
+                        Smbsharename = Smbsharename,
                         Fileservername = Fileservername,
-                        Targetpath = namespacetargetpath
+                        Domainname = Domainname
                     };
 
                     NamespacecreationService.Create(clientUser);
@@ -75,16 +75,16 @@ namespace Portal.App.Filestorage
 
                     txtDfsservername.Text = string.Empty;
                     txtFileservername.Text = string.Empty;
-                    txtDfspath.Text = string.Empty;
-                    txtTargetpath.Text = string.Empty;
+                    txtDomain.Text = string.Empty;
+                    txtsmbname.Text = string.Empty;
                 }
                 else
                 {
                     var namespacecreation = NamespacecreationService.Retrieve(EditNamespaceCreationId);
                     namespacecreation.Dfsservername = Dfsservername;
-                    namespacecreation.Dfspath = DFSpath;
+                    namespacecreation.Domainname = Domainname;
                     namespacecreation.Fileservername = Fileservername;
-                    namespacecreation.Targetpath = namespacetargetpath;
+                    namespacecreation.Smbsharename = Smbsharename;
 
                     NamespacecreationService.Update(namespacecreation);
                     ShowSuccessMessage("Script Generated. Click to download.");
@@ -122,8 +122,8 @@ namespace Portal.App.Filestorage
                     lblTitle.Text = "Edit Namespace parameters"; // change caption
                     txtDfsservername.Text = namespaceCreation.Dfsservername;
                     txtFileservername.Text = namespaceCreation.Fileservername;
-                    txtDfspath.Text = namespaceCreation.Dfspath;
-                    txtTargetpath.Text = namespaceCreation.Targetpath;
+                    txtDomain.Text = namespaceCreation.Domainname;
+                    txtsmbname.Text = namespaceCreation.Smbsharename;
                 }
             }
 
@@ -137,7 +137,7 @@ namespace Portal.App.Filestorage
         public int EditNamespaceCreationId { get; set; }
 
        
-        private bool CreatePSIFile(string Dfsservername, string DFSpath, string Fileservername, string namespacetargetpath)
+        private bool CreatePSIFile(string Dfsservername, string Smbsharename, string Fileservername, string Domainname)
         {
             bool returnResult = false;
            // string folderName = ConfigurationManager.ConnectionStrings["PSIFilePath"].ToString();
@@ -155,16 +155,25 @@ namespace Portal.App.Filestorage
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to create DFS Namespace");
+                    writer.WriteLine("Folder should be created and SMB share has to be created before adding DFS Namespace");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
+                    writer.WriteLine("$Hostname=" + Dfsservername);
+                    writer.WriteLine("<# Enter the remote session of the server#>");
+                    writer.WriteLine("New-PSSession –Name Namespace –ComputerName $Hostname");
+                    writer.WriteLine("Enter-PSSession –Name Namespace");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+Dfsservername);
-                    writer.WriteLine("$physicaladapter="+DFSpath);
-                    writer.WriteLine("$allowmos="+Fileservername);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("$smbname=" + Smbsharename);
+                    writer.WriteLine("$Fileserver=" + Fileservername);
+                    writer.WriteLine("$Domainname=" + Domainname);
+                    @writer.WriteLine(@"New-DfsnRoot –Path ""\\$Domainname\$smbname"" -TargetPath ""\\$Fileserver\$smbname"" -Type Domainv2 | Format-List");
+                    @writer.WriteLine(@"Path: ""\\$Domainname\$smbname""");
+                    @writer.WriteLine(@"Description : Domain-based $smbname namespace");
+                    @writer.WriteLine(@"Type : Domain V2");
+                    @writer.WriteLine(@"State : Online");
+                    @writer.WriteLine(@"TimeToLiveSec : 300");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

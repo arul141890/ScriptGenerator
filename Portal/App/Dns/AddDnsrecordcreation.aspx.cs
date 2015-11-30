@@ -166,7 +166,7 @@ namespace Portal.App.Dns
                     writer.WriteLine("Import-Module DNSShell");
                     writer.WriteLine("$Zonename="+Zonename);
                     writer.WriteLine("$Csvfilename=" + Csvfilename);
-                    @writer.WriteLine(@"Import-CSV $Csvfilename | %{New -DNSRecord -Name $_.""HostName"" - RecordType A - ZoneName $Zonename - IPAddress $_.""IPAddr""}");
+                    @writer.WriteLine(@"Import-CSV $Csvfilename | %{New -DNSRecord -Name $_.""HostName"" - RecordType A - ZoneName $Zonename - IPAddress $_.""IPAddress""}");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

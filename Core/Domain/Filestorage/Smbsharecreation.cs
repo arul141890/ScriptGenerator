@@ -6,8 +6,6 @@
 
         public string Smbname { get; set; }
 
-        public string Encyptdata { get; set; }
-
         public string Accessgroups { get; set; }
     }
 }

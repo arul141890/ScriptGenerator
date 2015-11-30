@@ -40,13 +40,13 @@ namespace Portal.App.HyperV {
         protected global::System.Web.UI.WebControls.TextBox txtAdapter;
         
         /// <summary>
-        /// AllowManagementOs control.
+        /// DDAllowManagementOs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AllowManagementOs;
+        protected global::System.Web.UI.WebControls.DropDownList DDAllowManagementOs;
         
         /// <summary>
         /// lblErrorMessage control.

@@ -34,10 +34,10 @@
                 </asp:DropDownList>
             </li>
             <li><span class="label">Host Name:</span>
-                <asp:TextBox ID="txtHostname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtHostname" ClientIDMode="Static" runat="server" MaxLength="25"></asp:TextBox>
             </li>
             <li><span class="label">IP Address:</span>
-                <asp:TextBox ID="txtIpaddress" ClientIDMode="Static" runat="server">C:\Windows\NTDS</asp:TextBox>
+                <asp:TextBox ID="txtIpaddress" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
         </ul>
         <p class="error">

@@ -135,15 +135,18 @@ namespace Portal.App.Filestorage
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to install File Services");
+                    writer.WriteLine("This will install File Services Role service along with management tools");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
+                    writer.WriteLine("$Hostname=" + Hostname);
+                    writer.WriteLine("<# Enter the remote session of the server#>");
+                    writer.WriteLine("New-PSSession –Name FSinstall –ComputerName $Hostname");
+                    writer.WriteLine("Enter-PSSession –Name FSinstall");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname="+Hostname);
-                    writer.WriteLine("$physicaladapter="+IPAddress);
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("Install-WindowsFeature File-Services -IncludeManagementTools");
+                    writer.WriteLine("Install-WindowsFeature FS-Resource-Manager, FS-BranchCache, FS-Data-Deduplication, FS-DFS-Namespace, FS-DFS-Replication, FS-VSS-Agent, FS-iSCSITarget-Server, iSCSITarget-VSS-VDS, FS-NFS-Service");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

@@ -26,7 +26,7 @@ namespace Portal.App.Dns
             var hostname = txtHostname.Text.Trim();
             var Ipaddress = txtIpaddress.Text.Trim();
 
-            // Switch Name validation
+            // DNS installation validation
             if (isstaticip == "--SELECT--")
             {
                 this.ShowErrorMessage("Please confirm if server has static IP Address");
