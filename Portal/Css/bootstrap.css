@@ -559,7 +559,9 @@ a:focus {
 
 .container-fluid:after { clear: both; }
 
-p { margin: 0 0 10px; }
+p { margin: 0 0 4px 0;
+    height: 25px;
+}
 
 .lead {
     font-size: 21px;

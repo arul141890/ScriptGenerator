@@ -30,7 +30,7 @@ namespace Portal.App.HyperV
 
             this.gvData.GenerateColumns();
 
-            this.pnlFilter.IgnoreFields = "Id";
+            this.pnlFilter.IgnoreFields = "Id,Vmpath,Isopath";
             this.pnlFilter.DateRangeFields = "CreatedDate";
             this.pnlFilter.GenerateFilters();
         }

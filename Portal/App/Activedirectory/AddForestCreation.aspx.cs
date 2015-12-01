@@ -76,12 +76,7 @@ namespace Portal.App.Activedirectory
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(safemodeadminpwd))
-            {
-                this.ShowErrorMessage("Please enter Safemode administrator password.");
-                return;
-            }
-
+          
             if (Domainmode == "--SELECT--")
             {
                 this.ShowErrorMessage("Please select domain mode.");
@@ -94,7 +89,12 @@ namespace Portal.App.Activedirectory
                 return;
             }
 
-                       
+            if (string.IsNullOrWhiteSpace(safemodeadminpwd))
+            {
+                this.ShowErrorMessage("Please enter Safemode administrator password.");
+                return;
+            }
+
             try
             {
                 //Call PSI file creater Method:

@@ -11,9 +11,6 @@
     <div class="s-breadcrumb">
         <ul>
             <li>
-                <a class="back" href="<%= this.ResolveClientUrl("~/Default.aspx") %>">&lt; Back to dashboard</a>
-            </li>
-            <li>
                 <a class="command" href="<%= this.ResolveClientUrl("~/App/Activedirectory/AddForestCreation.aspx") %>">Create New Active Directory Forest</a>
             </li>
         </ul>

@@ -30,7 +30,7 @@ namespace Portal.App.Remotedesktopservices
 
             this.gvData.GenerateColumns();
 
-            this.pnlFilter.IgnoreFields = "Id";
+            this.pnlFilter.IgnoreFields = "Id,Collectiondescription";
             this.pnlFilter.DateRangeFields = "CreatedDate";
             this.pnlFilter.GenerateFilters();
         }

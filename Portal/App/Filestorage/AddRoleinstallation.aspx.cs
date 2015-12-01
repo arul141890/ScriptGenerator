@@ -25,19 +25,21 @@ namespace Portal.App.Filestorage
             bool returnResult = false;
             var Hostname = txtHostname.Text.Trim();
             var Ipaddress = txtIPAddress.Text.Trim();
-            
+
             // Switch Name validation
+            if (string.IsNullOrWhiteSpace(Ipaddress))
+            {
+                this.ShowErrorMessage("Please enter IP Address.");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(Hostname))
             {
                 this.ShowErrorMessage("Please enter Hostname.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(Ipaddress))
-            {
-                this.ShowErrorMessage("Please enter IP Address.");
-                return;
-            }
+        
 
 
 

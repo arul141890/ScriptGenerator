@@ -61,9 +61,9 @@ namespace Portal
             }
             else
             {
-                if (UserService.AuthenticateUser(txtUserId.Text, txtPassword.Text.Md5()))
+                if (UserService.AuthenticateUser(txtUserId.Text.ToLower(), txtPassword.Text.Md5()))
                 {
-                    FormsAuthentication.SetAuthCookie(txtUserId.Text, true);
+                    FormsAuthentication.SetAuthCookie(txtUserId.Text.ToLower(), true);
                     var returnUrl = Request.QueryString["ReturnUrl"];
                     Response.Redirect(returnUrl ?? DefaultUrl);
                 }

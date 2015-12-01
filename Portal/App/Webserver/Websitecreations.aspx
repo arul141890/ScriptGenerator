@@ -10,9 +10,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="s-breadcrumb">
         <ul>
-            <li>
-                <a class="back" href="<%= this.ResolveClientUrl("~/Default.aspx") %>">&lt; Back to dashboard</a>
-            </li>
+            
             <li>
                 <a class="command" href="<%= this.ResolveClientUrl("~/App/Webserver/AddWebsiteCreation.aspx") %>">Create new website</a>
             </li>

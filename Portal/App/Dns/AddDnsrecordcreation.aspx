@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="s-breadcrumb">
-        <a class="back" href="<%= this.ResolveClientUrl("~/App/Dns/AddDnsrecordcreations.aspx") %>"> &lt; DNS Record Creation Dashboard</a>
+        <a class="back" href="<%= this.ResolveClientUrl("~/App/Dns/Dnsrecordcreations.aspx") %>"> &lt; DNS Record Creation Dashboard</a>
     </div>
 
     <div class="s-form-container">

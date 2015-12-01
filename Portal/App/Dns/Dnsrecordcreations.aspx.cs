@@ -30,7 +30,7 @@ namespace Portal.App.Dns
 
             this.gvData.GenerateColumns();
 
-            this.pnlFilter.IgnoreFields = "Id";
+            this.pnlFilter.IgnoreFields = "Id,Csvfilename";
             this.pnlFilter.DateRangeFields = "CreatedDate";
             this.pnlFilter.GenerateFilters();
         }

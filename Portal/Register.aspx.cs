@@ -31,7 +31,7 @@ namespace Portal
             lblErrorMessage.Text = "";
             this.HideLabels();
             var Email = txtemail.Text.Trim();
-            var Userid = txtUserId.Text.Trim();
+            var Userid = txtUserId.Text.ToLower();
             var Password = txtPassword.Text.Md5();
             var ConfPassword = txtPasswordconfirm.Text.Md5();
            
@@ -41,6 +41,7 @@ namespace Portal
             if (txtPassword.Text.Trim()!= txtPasswordconfirm.Text.Trim())
             {
                 this.ShowErrorMessage("Password does not match.");
+                return;
             }
 
             if (string.IsNullOrWhiteSpace(Email))
@@ -60,11 +61,13 @@ namespace Portal
             if (string.IsNullOrWhiteSpace(Password))
             {
                 this.ShowErrorMessage("please enter Password");
+                return;
             }
 
             if (string.IsNullOrWhiteSpace(ConfPassword))
             {
                 this.ShowErrorMessage("please Confirm Password");
+                return;
             }
 
             try

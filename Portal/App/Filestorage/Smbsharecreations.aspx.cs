@@ -30,7 +30,7 @@ namespace Portal.App.Filestorage
 
             this.gvData.GenerateColumns();
 
-            this.pnlFilter.IgnoreFields = "Id";
+            this.pnlFilter.IgnoreFields = "Id,Directoryname,Accessgroups";
             this.pnlFilter.DateRangeFields = "CreatedDate";
             this.pnlFilter.GenerateFilters();
         }

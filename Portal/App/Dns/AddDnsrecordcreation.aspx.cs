@@ -139,7 +139,7 @@ namespace Portal.App.Dns
         {
             bool returnResult = false;
            // string folderName = ConfigurationManager.ConnectionStrings["PSIFilePath"].ToString();
-            string psiFilePath =  "VirtualSwitch" + ".ps1";
+            string psiFilePath =  "DNSRecord" + ".ps1";
 
             try
             {

@@ -22,9 +22,8 @@ namespace Portal.App.HyperV
         protected void ButtonClick(object sender, EventArgs e)
         {
             this.HideLabels();
-            bool returnResult = false;
             var switchName = txtSwitchName.Text.Trim();
-            var adapter = this.txtAdapter.Text.Trim();
+            var adapter = xtAdapter.Text.Trim();
             var allowManagementOs = DDAllowManagementOs.SelectedItem.Text;
             
             // Switch Name validation

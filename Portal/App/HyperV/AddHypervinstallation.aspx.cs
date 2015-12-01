@@ -46,7 +46,7 @@ namespace Portal.App.HyperV
                 return;
             }
 
-            if (Isphysicalmachine == "False")
+            if (Isvtenabled == "False")
             {
                 this.ShowErrorMessage("Hyper-V can be installed only if virtualization technology is enabled in BIOS");
                 return;

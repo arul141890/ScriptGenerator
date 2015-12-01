@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="s-breadcrumb">
-        <a class="back" href="<%= this.ResolveClientUrl("~/App/Filestorage/Namespacecreatios.aspx") %>"> &lt; DFS Namespace Creation Dashboard</a>
+        <a class="back" href="<%= this.ResolveClientUrl("~/App/Filestorage/Namespacecreations.aspx") %>"> &lt; DFS Namespace Creation Dashboard</a>
     </div>
 
     <div class="s-form-container">

@@ -30,7 +30,7 @@ namespace Portal.App.Activedirectory
 
             this.gvData.GenerateColumns();
 
-            this.pnlFilter.IgnoreFields = "Id";
+            this.pnlFilter.IgnoreFields = "Id,Allowreplicationaccount,Delegatedadminiaccount,Denyreplicationaccount,Logpath,Sysvolpath,Databasepath";
             this.pnlFilter.DateRangeFields = "CreatedDate";
             this.pnlFilter.GenerateFilters();
         }
