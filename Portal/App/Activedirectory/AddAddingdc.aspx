@@ -13,27 +13,27 @@
         </p>
         <ul>
             <li><span class="label">Hostname:</span>
-                <asp:TextBox ID="TxtHostname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TxtHostname" ClientIDMode="Static" runat="server" MaxLength="25"></asp:TextBox>
             </li>
             <li><span class="label">IPAddress:</span>
-                <asp:TextBox ID="TxtIPAddress" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TxtIPAddress" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
 
             <li><span class="label">DomainName:</span>
-                <asp:TextBox ID="txtdomainname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtdomainname" ClientIDMode="Static" runat="server" MaxLength="15"></asp:TextBox>
             </li>
             <li><span class="label">DatabasePath:</span>
-                <asp:TextBox ID="txtdbpath" ClientIDMode="Static" runat="server">C:\Windows\NTDS</asp:TextBox>
+                <asp:TextBox ID="txtdbpath" ClientIDMode="Static" runat="server" MaxLength="90">C:\Windows\NTDS</asp:TextBox>
             </li>
 
              <li><span class="label">LogPath:</span>
-                <asp:TextBox ID="txtlogpath" ClientIDMode="Static" runat="server">C:\Windows\NTDS</asp:TextBox>
+                <asp:TextBox ID="txtlogpath" ClientIDMode="Static" runat="server" MaxLength="90">C:\Windows\NTDS</asp:TextBox>
             </li>
             <li><span class="label">SysvolPath:</span>
-                <asp:TextBox ID="txtsysvol" ClientIDMode="Static" runat="server">C:\Windows\SYSVOL</asp:TextBox>
+                <asp:TextBox ID="txtsysvol" ClientIDMode="Static" runat="server" MaxLength="90">C:\Windows\SYSVOL</asp:TextBox>
             </li>
             <li><span class="label">safemodeadministratorpassword:</span>
-                <asp:TextBox runat="server" ID="txtsafemodepwd" TextMode="Password" />
+                <asp:TextBox runat="server" ID="txtsafemodepwd" TextMode="Password" MaxLength="25" />
             </li>
         </ul>
         <p class="error">

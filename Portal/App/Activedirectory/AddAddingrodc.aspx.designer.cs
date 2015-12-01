@@ -40,15 +40,6 @@ namespace Portal.App.Activedirectory {
         protected global::System.Web.UI.WebControls.TextBox txtIpaddress;
         
         /// <summary>
-        /// DDCriticalreplication control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDCriticalreplication;
-        
-        /// <summary>
         /// txtAllowpraccount control.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,15 @@ namespace Portal.App.Activedirectory {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAllowpraccount;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
         /// txtdenypraccount control.
@@ -67,6 +67,15 @@ namespace Portal.App.Activedirectory {
         protected global::System.Web.UI.WebControls.TextBox txtdenypraccount;
         
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// txtDelegatedacc control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace Portal.App.Activedirectory {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDelegatedacc;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// txtdomainname control.
@@ -85,15 +103,6 @@ namespace Portal.App.Activedirectory {
         protected global::System.Web.UI.WebControls.TextBox txtdomainname;
         
         /// <summary>
-        /// DDInstallDNS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDInstallDNS;
-        
-        /// <summary>
         /// txtSitename control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,33 @@ namespace Portal.App.Activedirectory {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSitename;
+        
+        /// <summary>
+        /// txtdbpath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtdbpath;
+        
+        /// <summary>
+        /// txtlogpath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtlogpath;
+        
+        /// <summary>
+        /// txtsysvol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtsysvol;
         
         /// <summary>
         /// lblErrorMessage control.

@@ -77,19 +77,19 @@
                         <ul>
                             <li>Email ID</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtemail" />
+                                <asp:TextBox runat="server" ID="txtemail" MaxLength="90" />
                             </li>
                             <li>User Name</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtUserId" />
+                                <asp:TextBox runat="server" ID="txtUserId" MaxLength="25"/>
                             </li>
                             <li>Password</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" />
+                                <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" MaxLength="30" />
                             </li>
                             <li>Confirm Password</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtPasswordconfirm" TextMode="Password" />
+                                <asp:TextBox runat="server" ID="txtPasswordconfirm" TextMode="Password" MaxLength="30" />
                             </li>
                             <li>
                                 <asp:Button Text="Login" ID="Button1" runat="server" OnClick="BtnLogin" />

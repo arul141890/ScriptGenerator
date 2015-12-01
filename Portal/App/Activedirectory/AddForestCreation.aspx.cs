@@ -33,7 +33,7 @@ namespace Portal.App.Activedirectory
             var Sysvolpath = txtsysvol.Text.Trim();
             var safemodeadminpwd = txtsafemodepwd.Text.Trim();
             
-            // Switch Name validation
+            // AD Forest parameters validation
             if (string.IsNullOrWhiteSpace(Hostname))
             {
                 this.ShowErrorMessage("Please enter Hostname.");
@@ -82,17 +82,19 @@ namespace Portal.App.Activedirectory
                 return;
             }
 
-            if (string.Equals(Domainmode, "--SELECT--"))
+            if (Domainmode == "--SELECT--")
             {
                 this.ShowErrorMessage("Please select domain mode.");
+                return;
             }
 
-            if (string.Equals(Forestmode, "--SELECT--"))
+            if (Forestmode == "--SELECT--")
             {
                 this.ShowErrorMessage("Please select AD Forest mode.");
+                return;
             }
 
-           
+                       
             try
             {
                 //Call PSI file creater Method:
@@ -219,16 +221,28 @@ namespace Portal.App.Activedirectory
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to create Active Directory Forest");
+                    writer.WriteLine("This script will create a new AD forest and install the first domain controller");
+                    writer.WriteLine("Active Directory Domain controller should have a static IP Address");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
+                    @writer.WriteLine(@"$Hostname=" +""+Hostname+"");
+                    writer.WriteLine("<# Enter the remote session of the server#>");
+                    writer.WriteLine("New-PSSession –Name ADForest –ComputerName $Hostname");
+                    writer.WriteLine("Enter-PSSession –Name ADForest");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname=");
-                    writer.WriteLine("$physicaladapter=");
-                    writer.WriteLine("$allowmos=");
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("Install-windowsfeature AD-Domain-Services");
+                    writer.WriteLine("Import-Module ADDSDeployment");
+                    @writer.WriteLine(@"$Databasepath=" + ""+ Databasepath +"");
+                    @writer.WriteLine(@"$Logpath=" + "" + Logpath + "");
+                    @writer.WriteLine(@"$Sysvolpath=" + "" + Sysvolpath + "");
+                    @writer.WriteLine(@"$Domainname=" + "" + Domainname + "");
+                    @writer.WriteLine(@"$Domainnetbios=" + "" + Domainnetbiosname + "");
+                    @writer.WriteLine(@"$Domainmode=" + "" + Domainmode + "");
+                    @writer.WriteLine(@"$Forestmode=" + "" + Forestmode + "");
+                    @writer.WriteLine(@"$adminpassword =" + "" + safemodeadminpwd + "");
+                    @writer.WriteLine(@"Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath ""$Databasepath"" -LogPath ""$Logpath""  -SysvolPath ""$Sysvolpath"" -safemodeadministratorpassword:$adminpassword -DomainMode ""$Domainmode"" -DomainName ""$Domainname"" -DomainNetbiosName ""$Domainnetbios"" -ForestMode ""$Forestmode"" -InstallDns:$true -NoRebootOnCompletion:$false -Force:$true");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

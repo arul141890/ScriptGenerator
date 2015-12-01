@@ -77,11 +77,11 @@
                         <ul>
                             <li>User Name</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtUserId" />
+                                <asp:TextBox runat="server" ID="txtUserId" MaxLength="25" />
                             </li>
                             <li>Password</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" />
+                                <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" MaxLength="30" />
                             </li>
                             <li></li>
                             <li>

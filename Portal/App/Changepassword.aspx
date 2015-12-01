@@ -78,11 +78,15 @@
                             
                             <li>Current Password</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtOldPassword" TextMode="Password" />
+                                <asp:TextBox runat="server" ID="txtOldPassword" TextMode="Password" MaxLength="30" />
                             </li>
                             <li>New Password</li>
                             <li>
-                                <asp:TextBox runat="server" ID="txtNewPassword" TextMode="Password" />
+                                <asp:TextBox runat="server" ID="txtNewPassword" TextMode="Password" MaxLength="30" />
+                            </li>
+                            <li>Confirm Password</li>
+                            <li>
+                                <asp:TextBox runat="server" ID="txtPasswordconfirm" TextMode="Password" MaxLength="30" />
                             </li>
                             <li></li>
                             <li>

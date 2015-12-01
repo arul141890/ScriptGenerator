@@ -15,6 +15,7 @@ namespace Portal
 {
     public partial class Changepassword : BasePage
     {
+        
         [SetterProperty]
         public IChangepassword Passwordchange { get; set; }
 
@@ -23,8 +24,9 @@ namespace Portal
         {
             lblErrorMessage.Text = "";
             this.HideLabels();
-            var Oldpassword = txtOldPassword.Text.Trim();
-            var Newpassword = txtNewPassword.Text.Trim();
+            var Oldpassword = txtOldPassword.Text.Md5();
+            var Newpassword = txtNewPassword.Text.Md5();
+            var confirmpassword = txtPasswordconfirm.Text.Md5();
 
             // Password validation
             if (string.IsNullOrWhiteSpace(Oldpassword))
@@ -38,7 +40,18 @@ namespace Portal
                 this.ShowErrorMessage("Please enter New Password.");
                 return;
             }
-            
+
+            if (string.IsNullOrWhiteSpace(confirmpassword))
+            {
+                this.ShowErrorMessage("Please confirm new Password.");
+                return;
+            }
+
+            if (txtNewPassword.Text.Trim() != txtPasswordconfirm.Text.Trim())
+            {
+                this.ShowErrorMessage("Password does not match.");
+            }
+
             try
             {
                 var clientUser = new User()

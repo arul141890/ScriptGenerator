@@ -25,13 +25,13 @@ namespace Portal.App.Activedirectory
             var Hostname = txtHostname.Text.Trim();
             var Ipaddress = txtIpaddress.Text.Trim();
             var AllowpraName = txtAllowpraccount.Text.Trim();
-            // correct declaration for DD
-            var Critreplica = DDCriticalreplication.SelectedItem.Text;
             var delegatedadminacc = txtDelegatedacc.Text.Trim();
             var DenypraName = txtdenypraccount.Text.Trim();
             var DomainName = txtdomainname.Text.Trim();
-            var InstallDNS = DDInstallDNS.SelectedItem.Text;
             var SiteName = txtSitename.Text.Trim();
+            var dbpath = txtdbpath.Text.Trim();
+            var logpath = txtlogpath.Text.Trim();
+            var sysvolpath = txtsysvol.Text.Trim();
             
             // RODC parameter validation
             if (string.IsNullOrWhiteSpace(Hostname))
@@ -40,13 +40,7 @@ namespace Portal.App.Activedirectory
                 return;
             }
 
-            if(Critreplica == "--SELECT--")
-            {
-                this.ShowErrorMessage("Please select a value for critical replication");
-                return;
-            }
-
-
+            
             if (string.IsNullOrWhiteSpace(Ipaddress))
             {
                 this.ShowErrorMessage("Please enter IP Address.");
@@ -78,22 +72,34 @@ namespace Portal.App.Activedirectory
                 return;
             }
 
-            if (InstallDNS == "--SELECT--")
-            {
-                this.ShowErrorMessage("Please select an option for DNS Installation");
-                return;
-            }
-
             if (string.IsNullOrWhiteSpace(SiteName))
             {
                 this.ShowErrorMessage("Please enter Site name.");
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(dbpath))
+            {
+                this.ShowErrorMessage("Please enter Database path.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(sysvolpath))
+            {
+                this.ShowErrorMessage("Please enter System volume path.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(logpath))
+            {
+                this.ShowErrorMessage("Please enter Log path.");
+                return;
+            }
+
             try
             {
                 //Call PSI file creater Method:
-                CreatePSIFile(Hostname, Ipaddress, AllowpraName, Critreplica, delegatedadminacc, DenypraName, DomainName, InstallDNS, SiteName);
+                CreatePSIFile(Hostname, Ipaddress, AllowpraName, delegatedadminacc, DenypraName, DomainName, SiteName, dbpath, sysvolpath, logpath);
                
                 
                 if (0 == EditRODCId)
@@ -104,13 +110,14 @@ namespace Portal.App.Activedirectory
                         CreatedDate = DateTimeHelper.Now,
                         Hostname = Hostname,
                         Ipaddress = Ipaddress,
-                        AllowpasswordreplicationaccountName = AllowpraName,
-                        CriticalReplicationOnly=Critreplica,
-                        Delegatedadministratoraccountname = delegatedadminacc,
-                        Denypasswordreplicationaccountname = DenypraName,
+                        Allowreplicationaccount = AllowpraName,
+                        Delegatedadminiaccount = delegatedadminacc,
+                        Denyreplicationaccount = DenypraName,
                         DomainName= DomainName,
-                        InstallDNS = InstallDNS,
-                        SiteName = SiteName
+                        SiteName = SiteName,
+                        Databasepath=dbpath,
+                        Sysvolpath=sysvolpath,
+                        Logpath=logpath
                         
                     };
 
@@ -119,25 +126,28 @@ namespace Portal.App.Activedirectory
                     txtHostname.Text = string.Empty;
                     txtIpaddress.Text = string.Empty;
                     txtAllowpraccount.Text = string.Empty;
-                    DDCriticalreplication.SelectedItem.Value = DropdownDefaultText;
                     txtDelegatedacc.Text = string.Empty;
                     txtdenypraccount.Text = string.Empty;
                     txtdomainname.Text = string.Empty;
-                    DDInstallDNS.SelectedItem.Value = DropdownDefaultText;
                     txtSitename.Text = string.Empty;
+                    txtdbpath.Text = string.Empty;
+                    txtsysvol.Text = string.Empty;
+                    txtlogpath.Text = string.Empty;
+
                 }
                 else
                 {
                     var RODCcreation = AddingrodcService.Retrieve(EditRODCId);
                     RODCcreation.Hostname = Hostname;
                     RODCcreation.Ipaddress = Ipaddress;
-                    RODCcreation.AllowpasswordreplicationaccountName = AllowpraName;
-                    RODCcreation.CriticalReplicationOnly = Critreplica;
-                    RODCcreation.Delegatedadministratoraccountname = delegatedadminacc;
-                    RODCcreation.Denypasswordreplicationaccountname = DenypraName;
+                    RODCcreation.Allowreplicationaccount = AllowpraName;
+                    RODCcreation.Denyreplicationaccount = DenypraName;
+                    RODCcreation.Delegatedadminiaccount = delegatedadminacc;
                     RODCcreation.DomainName = DomainName;
-                    RODCcreation.InstallDNS = InstallDNS;
                     RODCcreation.SiteName = SiteName;
+                    RODCcreation.Databasepath = dbpath;
+                    RODCcreation.Logpath = logpath;
+                    RODCcreation.Sysvolpath = sysvolpath;
 
                     AddingrodcService.Update(RODCcreation);
                     ShowSuccessMessage("Script Generated. Click to download.");
@@ -175,13 +185,14 @@ namespace Portal.App.Activedirectory
                     lblTitle.Text = "Edit RODC Parameters"; // change caption
                     txtHostname.Text = RODCcreation.Hostname;
                     txtIpaddress.Text = RODCcreation.Ipaddress;
-                    txtAllowpraccount.Text = RODCcreation.AllowpasswordreplicationaccountName;
-                    DDCriticalreplication.SelectedItem.Value = RODCcreation.CriticalReplicationOnly;
-                    txtDelegatedacc.Text = RODCcreation.Delegatedadministratoraccountname;
-                    txtdenypraccount.Text = RODCcreation.Denypasswordreplicationaccountname;
+                    txtAllowpraccount.Text = RODCcreation.Allowreplicationaccount;
+                    txtDelegatedacc.Text = RODCcreation.Delegatedadminiaccount;
+                    txtdenypraccount.Text = RODCcreation.Denyreplicationaccount;
                     txtdomainname.Text = RODCcreation.DomainName;
-                    DDInstallDNS.SelectedItem.Value = RODCcreation.InstallDNS;
                     txtSitename.Text = RODCcreation.SiteName;
+                    txtdbpath.Text = RODCcreation.Databasepath;
+                    txtlogpath.Text = RODCcreation.Logpath;
+                    txtsysvol.Text = RODCcreation.Sysvolpath;
 
                  }
             }
@@ -196,7 +207,7 @@ namespace Portal.App.Activedirectory
         public int EditRODCId { get; set; }
 
        
-        private bool CreatePSIFile(string Hostname,string Ipaddress,string AllowpraName,string Critreplica,string delegatedadminacc,string DenypraName,string DomainName,string InstallDNS,string SiteName)
+        private bool CreatePSIFile(string Hostname,string Ipaddress,string AllowpraName,string delegatedadminacc,string DenypraName,string DomainName,string SiteName,string dbpath,string sysvolpath,string logpath)
         {
             bool returnResult = false;
            // string folderName = ConfigurationManager.ConnectionStrings["PSIFilePath"].ToString();
@@ -214,16 +225,26 @@ namespace Portal.App.Activedirectory
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to Add a new Read Only Domain Controller");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
+                    @writer.WriteLine(@"$Hostname=" + "" + Hostname + "");
+                    writer.WriteLine("<# Enter the remote session of the server#>");
+                    writer.WriteLine("New-PSSession –Name ADRODC –ComputerName $Hostname");
+                    writer.WriteLine("Enter-PSSession –Name ADRODC");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname=");
-                    writer.WriteLine("$physicaladapter=");
-                    writer.WriteLine("$allowmos=");
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("Install-windowsfeature AD-Domain-Services");
+                    writer.WriteLine("Import-Module ADDSDeployment");
+                    @writer.WriteLine(@"$AllowpraName=" + "" + AllowpraName + "");
+                    @writer.WriteLine(@"$delegatedadminacc=" + "" + delegatedadminacc + "");
+                    @writer.WriteLine(@"$DenypraName=" + "" + DenypraName + "");
+                    @writer.WriteLine(@"$Domainname=" + "" + DomainName + "");
+                    @writer.WriteLine(@"$SiteName=" + "" + SiteName + "");
+                    @writer.WriteLine(@"$Dbpath=" + "" + dbpath + "");
+                    @writer.WriteLine(@"$Logpath=" + "" + logpath + "");
+                    @writer.WriteLine(@"$Sysvolpath=" + "" + sysvolpath + "");
+                    @writer.WriteLine(@"Install-ADDSDomainController -AllowPasswordReplicationAccountName @$AllowpraName -DelegatedAdministratorAccountName @$delegatedadminacc -DenyPasswordReplicationAccountName @$DenypraName  -Credential (Get-Credential) -CriticalReplicationOnly:$false -DomainName ""$Domainname"" -ApplicationPartitionsToReplicate * -CreateDnsDelegation:$false -DatabasePath ""$Dbpath"" -LogPath ""$Logpath"" -SysvolPath ""$Sysvolpath"" -DomainName ""$Domainname"" -ReadOnlyReplica:$true -SiteName ""$SiteName"" -InstallDns:$true -Force:$true");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

@@ -16,5 +16,7 @@
 
         public string Isopath { get; set; }
 
+        public string Hddsize { get; set; }
+
     }
 }

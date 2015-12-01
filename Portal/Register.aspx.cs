@@ -34,10 +34,15 @@ namespace Portal
             var Userid = txtUserId.Text.Trim();
             var Password = txtPassword.Text.Md5();
             var ConfPassword = txtPasswordconfirm.Text.Md5();
-            var pwd1 = txtPassword.Text.ToString();
-            var pwd2 = txtPasswordconfirm.Text.ToString();
+           
 
-            // Switch Name validation
+            // Registration fields validation
+
+            if (txtPassword.Text.Trim()!= txtPasswordconfirm.Text.Trim())
+            {
+                this.ShowErrorMessage("Password does not match.");
+            }
+
             if (string.IsNullOrWhiteSpace(Email))
             {
                 this.ShowErrorMessage("Please enter email id.");
@@ -61,13 +66,6 @@ namespace Portal
             {
                 this.ShowErrorMessage("please Confirm Password");
             }
-
-            if (pwd1 != pwd2)
-            {
-                this.ShowErrorMessage("Password does not match");
-            }
-
-
 
             try
             {

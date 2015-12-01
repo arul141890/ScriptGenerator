@@ -29,6 +29,7 @@ namespace Portal.App.HyperV
             var Maxmem = txtMaxmem.Text.Trim();
             var Minmem = txtMinmem.Text.Trim();
             var Isopath = txtIsopath.Text.Trim();
+            var Hddsize = Txthddsize.Text.Trim();
 
             // VM Parameters validation
             if (string.IsNullOrWhiteSpace(Vmname))
@@ -64,6 +65,12 @@ namespace Portal.App.HyperV
                 this.ShowErrorMessage("Please enter Minimum memory for VM.");
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(Hddsize))
+            {
+                this.ShowErrorMessage("Please enter Disk Size.");
+                return;
+            }
             if (string.IsNullOrWhiteSpace(Isopath))
             {
                 this.ShowErrorMessage("Please enter the location of OS ISO.");
@@ -74,7 +81,7 @@ namespace Portal.App.HyperV
             try
             {
                 //Call PSI file creater Method:
-                CreatePSIFile(Vmname, Vmpath, Physicaladapter, SwitchName, Maxmem, Minmem, Isopath);
+                CreatePSIFile(Vmname, Vmpath, Physicaladapter, SwitchName, Maxmem, Minmem, Hddsize, Isopath);
                
                 
                 if (0 == EditVMCreationId)
@@ -89,7 +96,8 @@ namespace Portal.App.HyperV
                         SwitchName=SwitchName,
                         Maxmem=Maxmem,
                         Minmem=Minmem,
-                        Isopath=Isopath,
+                        Hddsize=Hddsize,
+                        Isopath=Isopath
                     };
 
                     VMcreationService.Create(clientUser);
@@ -101,6 +109,7 @@ namespace Portal.App.HyperV
                     txtMaxmem.Text = string.Empty;
                     txtMinmem.Text = string.Empty;
                     txtIsopath.Text = string.Empty;
+                    Txthddsize.Text = string.Empty;
                 }
                 else
                 {
@@ -112,6 +121,7 @@ namespace Portal.App.HyperV
                     virtualMachineCreation.Maxmem = Maxmem;
                     virtualMachineCreation.Minmem = Minmem;
                     virtualMachineCreation.Isopath = Isopath;
+                    virtualMachineCreation.Hddsize = Hddsize;
 
                     VMcreationService.Update(virtualMachineCreation);
                     ShowSuccessMessage("Script Generated. Click to download.");
@@ -154,6 +164,7 @@ namespace Portal.App.HyperV
                     txtMaxmem.Text = virtualMachineCreation.Maxmem;
                     txtMinmem.Text = virtualMachineCreation.Minmem;
                     txtIsopath.Text = virtualMachineCreation.Isopath;
+                    Txthddsize.Text = virtualMachineCreation.Hddsize;
                 }
             }
 
@@ -167,7 +178,7 @@ namespace Portal.App.HyperV
         public int EditVMCreationId { get; set; }
 
        
-        private bool CreatePSIFile(string Vmname,string Vmpath,string Physicaladapter,string SwitchName,string Maxmem,string Minmem,string Isopath)
+        private bool CreatePSIFile(string Vmname,string Vmpath,string Physicaladapter,string SwitchName,string Maxmem,string Minmem,string Hddsize, string Isopath)
         {
             bool returnResult = false;
            // string folderName = ConfigurationManager.ConnectionStrings["PSIFilePath"].ToString();
@@ -185,16 +196,33 @@ namespace Portal.App.HyperV
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to create virtual Machine");
+                    writer.WriteLine("Execute the below command in Hyper-V server where the virtual machine needs to be created");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
                     writer.WriteLine("Import-Module ServerManager");
                     writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname=");
-                    writer.WriteLine("$physicaladapter=");
-                    writer.WriteLine("$allowmos=");
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    @writer.WriteLine(@"$VMname=" + ""+Vmname+"");
+                    @writer.WriteLine(@"$path=" +""+ Vmpath+"");
+                    @writer.WriteLine(@"$vmpath=""$path$VMname""");
+                    @writer.WriteLine(@"$swname="+ ""+SwitchName+"" );
+                    @writer.WriteLine(@"$phynwadapter="+ ""+Physicaladapter+"");
+                    @writer.WriteLine(@"$maxMEM=" + ""+Maxmem+"");
+                    @writer.WriteLine(@"$minmem=" + ""+Minmem+"");
+                    @writer.WriteLine(@"$isopath=" + ""+Isopath+"");
+                    @writer.WriteLine(@"$hddsize =" + "" +Hddsize+ "");
+                    @writer.WriteLine(@"$Harddisk=""Harddisk""");
+                    @writer.WriteLine(@"$Diskname=""$VMname.vhdx""");
+                    @writer.WriteLine(@"$GB=""GB""");
+                    @writer.WriteLine(@"New-Item -Path $vmpath -ItemType ""Directory"" ");
+                    @writer.WriteLine(@"New-Item -Path ""$vmpath$Harddisk\$Diskname"" -ItemType ""Directory""");
+                    @writer.WriteLine(@"$vhdpath = ""$vmpath$Harddisk\$Diskname""");
+                    @writer.WriteLine(@"New-VHD -Path $vhdpath –Fixed –SizeBytes $hddsize");
+                    @writer.WriteLine(@"New-VM -VHDPath ""$vhdpath"" -Name $VMname -Path ""$vmpath"" -SwitchName $swname");
+                    @writer.WriteLine(@"Set-VMMemory -VMName $VMname -DynamicMemoryEnabled $True -MaximumBytes $MaxMEM$GB -MinimumBytes $minmem$GB -StartupBytes 1GB");
+                    @writer.WriteLine(@"Set-VMDvdDrive -VMName ""$vmname""  -Path ""$isopath""");
+                    @writer.WriteLine(@"Start-VM ""VMname""");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

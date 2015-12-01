@@ -6,24 +6,25 @@ CREATE TABLE `addingdc` (
   `Hostname` varchar(30) NOT NULL,
   `Ipaddress` varchar(30) NOT NULL,
   `Userdomain` varchar(15) NOT NULL,
-  `Databasepath` varchar(100) NOT NULL DEFAULT 'C:\\Windows\\NTDS',
-  `Logpath` varchar(100) NOT NULL DEFAULT 'C:\\Windows\\NTDS',
-  `Sysvolpath` varchar(100) NOT NULL DEFAULT 'C:\\Windows\\SYSVOL',
+  `Databasepath` varchar(100) NOT NULL,
+  `Logpath` varchar(100) NOT NULL,
+  `Sysvolpath` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `addingrodc` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `CreatedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreatedBy` varchar(30) DEFAULT NULL,
-  `AllowpasswordreplicationaccountName` varchar(100) NOT NULL,
-  `CriticalReplicationOnly` varchar(15) NOT NULL,
-  `Delegatedadministratoraccountname` varchar(100) DEFAULT NULL,
-  `Denypasswordreplicationaccountname` varchar(100) NOT NULL,
+  `Allowreplicationaccount` varchar(200) NOT NULL,
+  `Delegatedadminiaccount` varchar(200) DEFAULT NULL,
+  `Denyreplicationaccount` varchar(200) NOT NULL,
   `DomainName` varchar(30) NOT NULL,
-  `InstallDNS` varchar(15) NOT NULL,
   `SiteName` varchar(45) NOT NULL,
-  `Hostname` varchar(45) NOT NULL,
+  `Hostname` varchar(20) NOT NULL,
   `Ipaddress` varchar(20) NOT NULL,
+  `Databasepath` varchar(100) NOT NULL,
+  `Logpath` varchar(100) NOT NULL,
+  `Sysvolpath` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 CREATE TABLE `apppublish` (
@@ -83,9 +84,24 @@ CREATE TABLE `forestcreation` (
   `CreatedBy` varchar(30) DEFAULT NULL,
   `Domainmode` varchar(20) NOT NULL,
   `Domainname` varchar(25) NOT NULL,
-  `Domainnetbiosname` varchar(15) NOT NULL,
+  `Domainnetbiosname` varchar(16) NOT NULL,
   `Forestmode` varchar(20) NOT NULL,
-  `Hostname` varchar(45) NOT NULL,
+  `Hostname` varchar(20) NOT NULL,
+  `Ipaddress` varchar(20) NOT NULL,
+  `Databasepath` varchar(100) NOT NULL,
+  `Logpath` varchar(100) NOT NULL,
+  `Sysvolpath` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CreatedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CreatedBy` varchar(30) DEFAULT NULL,
+  `Domainmode` varchar(20) NOT NULL,
+  `Domainname` varchar(25) NOT NULL,
+  `Domainnetbiosname` varchar(16) NOT NULL,
+  `Forestmode` varchar(20) NOT NULL,
+  `Hostname` varchar(20) NOT NULL,
   `Ipaddress` varchar(20) NOT NULL,
   `Databasepath` varchar(100) NOT NULL DEFAULT 'C:\\Windows\\NTDS',
   `Logpath` varchar(100) NOT NULL DEFAULT 'C:\\Windows\\NTDS',
@@ -107,9 +123,9 @@ CREATE TABLE `namespacecreation` (
   `CreatedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreatedBy` varchar(30) DEFAULT NULL,
   `Dfsservername` varchar(30) NOT NULL,
-  `Dfspath` varchar(100) NOT NULL,
+  `Smbsharename` varchar(30) NOT NULL,
   `Fileservername` varchar(30) NOT NULL,
-  `Targetpath` varchar(100) NOT NULL,
+  `Domainname` varchar(30) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `rdsinstallation` (
@@ -146,13 +162,12 @@ CREATE TABLE `smbsharecreation` (
   `CreatedBy` varchar(30) DEFAULT NULL,
   `Directoryname` varchar(100) NOT NULL,
   `Smbname` varchar(30) NOT NULL,
-  `Encyptdata` varchar(10) NOT NULL,
   `Accessgroups` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `user` (
   `UserId` varchar(30) NOT NULL,
-  `Email` varchar(255) DEFAULT NULL,
+  `Email` varchar(100) DEFAULT NULL,
   `PasswordHash` char(32) NOT NULL,
   `CreatedDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `CreatedBy` varchar(30) DEFAULT NULL,
@@ -164,10 +179,10 @@ CREATE TABLE `virtualdiskcreation` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `CreatedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreatedBy` varchar(30) DEFAULT NULL,
-  `VHDPath` varchar(150) NOT NULL,
-  `VHDSize` varchar(20) NOT NULL,
-  `VHDType` varchar(45) NOT NULL,
-  `ParentPath` varchar(150) DEFAULT NULL,
+  `VHDPath` varchar(100) NOT NULL,
+  `VHDSize` varchar(10) NOT NULL,
+  `VHDType` varchar(20) NOT NULL,
+  `ParentPath` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `virtualswitchcreation` (
@@ -176,20 +191,21 @@ CREATE TABLE `virtualswitchcreation` (
   `CreatedBy` varchar(30) DEFAULT NULL,
   `SwitchName` varchar(45) NOT NULL,
   `PhysicalAdapter` varchar(45) NOT NULL,
-  `AllowManagementOs` varchar(45) NOT NULL,
+  `AllowManagementOs` varchar(10) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 CREATE TABLE `vmcreation` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `CreatedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `CreatedBy` varchar(30) DEFAULT NULL,
-  `Vmname` varchar(45) NOT NULL,
-  `Vmpath` varchar(150) NOT NULL,
-  `Physicaladapter` varchar(45) NOT NULL,
-  `SwitchName` varchar(45) NOT NULL,
-  `Maxmem` varchar(20) NOT NULL,
-  `Minmem` varchar(20) NOT NULL,
-  `Isopath` varchar(150) NOT NULL,
+  `Vmname` varchar(30) NOT NULL,
+  `Vmpath` varchar(100) NOT NULL,
+  `Physicaladapter` varchar(30) NOT NULL,
+  `SwitchName` varchar(30) NOT NULL,
+  `Maxmem` varchar(5) NOT NULL,
+  `Minmem` varchar(5) NOT NULL,
+  `Isopath` varchar(100) NOT NULL,
+  `Hddsize` varchar(5) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `webserverinstallation` (

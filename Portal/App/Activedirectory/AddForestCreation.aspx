@@ -13,14 +13,14 @@
         </p>
         <ul>
             <li><span class="label">Hostname:</span>
-                <asp:TextBox ID="Txthostname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="Txthostname" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
            <li><span class="label">IP Address:</span>
-                <asp:TextBox ID="txtipaddress" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtipaddress" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
                         
             <li><span class="label">DatabasePath:</span>
-                <asp:TextBox ID="txtdbpath" ClientIDMode="Static" runat="server">C:\Windows\NTDS</asp:TextBox>
+                <asp:TextBox ID="txtdbpath" ClientIDMode="Static" runat="server" MaxLength="90">C:\Windows\NTDS</asp:TextBox>
             </li>
             <li><span class="label">DomainMode:</span>
                 <asp:DropDownList ID="DDdomainmode" runat="server">
@@ -31,10 +31,10 @@
                 </asp:DropDownList>
             </li>
             <li><span class="label">DomainName:</span>
-                <asp:TextBox ID="txtdomainname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtdomainname" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
            <li><span class="label">DomainNetbiosName:</span>
-                <asp:TextBox ID="txtnetbios" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtnetbios" ClientIDMode="Static" runat="server" MaxLength="16"></asp:TextBox>
             </li>
             <li><span class="label">ForestMode:</span>
                 <asp:DropDownList ID="DDforestmode" runat="server">
@@ -46,20 +46,14 @@
             </li>
            
             <li><span class="label">LogPath:</span>
-                <asp:TextBox ID="txtlogpath" ClientIDMode="Static" runat="server">C:\Windows\NTDS</asp:TextBox>
+                <asp:TextBox ID="txtlogpath" ClientIDMode="Static" runat="server" MaxLength="90">C:\Windows\NTDS</asp:TextBox>
             </li>
-            <li><span class="label">Reboot on completion:</span>
-                <asp:DropDownList ID="DDreboot" runat="server">
-                    <asp:ListItem Selected="True">--SELECT--</asp:ListItem>
-                    <asp:ListItem>False</asp:ListItem>
-                    <asp:ListItem>True</asp:ListItem>
-                </asp:DropDownList>
-            </li>
+            
             <li><span class="label">SysvolPath:</span>
-                <asp:TextBox ID="txtsysvol" ClientIDMode="Static" runat="server">C:\Windows\SYSVOL</asp:TextBox>
+                <asp:TextBox ID="txtsysvol" ClientIDMode="Static" runat="server" MaxLength="90">C:\Windows\SYSVOL</asp:TextBox>
             </li>
             <li><span class="label">safemodeadministratorpassword:</span>
-                <asp:TextBox runat="server" ID="txtsafemodepwd" TextMode="Password" />
+                <asp:TextBox runat="server" ID="txtsafemodepwd" TextMode="Password" MaxLength="15" />
             </li>
         </ul>
         <p class="error">

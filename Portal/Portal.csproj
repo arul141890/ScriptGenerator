@@ -206,7 +206,6 @@
     <Content Include="js\daterangepicker.js" />
     <Content Include="js\html5shiv.js" />
     <Content Include="js\jquery.js" />
-    <Content Include="Register_sample.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

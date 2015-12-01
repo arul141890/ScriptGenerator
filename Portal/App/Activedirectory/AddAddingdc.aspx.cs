@@ -21,13 +21,13 @@ namespace Portal.App.Activedirectory
                 protected void ButtonClick(object sender, EventArgs e)
         {
             this.HideLabels();
-            var Hostname = this.TxtHostname.Text.Trim();
-            var IPAddress = this.TxtIPAddress.Text.Trim();
-            var DomainName = this.txtdomainname.Text.Trim();
-            var DatabasePath = this.txtdbpath.Text.Trim();
-            var LogPath = this.txtlogpath.Text.Trim();
-            var Sysvolpath = this.txtsysvol.Text.Trim();
-            var safemodeadminpassword = this.txtsafemodepwd.Text.Trim();
+            var Hostname = TxtHostname.Text.Trim();
+            var IPAddress = TxtIPAddress.Text.Trim();
+            var DomainName = txtdomainname.Text.Trim();
+            var DatabasePath = txtdbpath.Text.Trim();
+            var LogPath = txtlogpath.Text.Trim();
+            var Sysvolpath = txtsysvol.Text.Trim();
+            var safemodeadminpassword = txtsafemodepwd.Text.Trim();
                         
             // DC Parameters validation
             if (string.IsNullOrWhiteSpace(Hostname))
@@ -184,16 +184,23 @@ namespace Portal.App.Activedirectory
                 using (StreamWriter writer = new StreamWriter(fs1))
                 {
                     writer.WriteLine("<# ");
-                    writer.WriteLine("PowerShell script to create virtual switch");
+                    writer.WriteLine("PowerShell script to add a Domain controller to a domain");
                     writer.WriteLine("Execute the below command if powershell script execution is disabled");
                     writer.WriteLine("set-executionpolicy unrestricted");
                     writer.WriteLine("#>");
+                    @writer.WriteLine(@"$Hostname=" + "" + hostname + "");
+                    writer.WriteLine("<# Enter the remote session of the server#>");
+                    writer.WriteLine("New-PSSession –Name ADDC –ComputerName $Hostname");
+                    writer.WriteLine("Enter-PSSession –Name ADDC");
                     writer.WriteLine("Import-Module ServerManager");
-                    writer.WriteLine("Import-Module Hyper-V");
-                    writer.WriteLine("$switchname=");
-                    writer.WriteLine("$physicaladapter=");
-                    writer.WriteLine("$allowmos=");
-                    writer.WriteLine("New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos");
+                    writer.WriteLine("Install-windowsfeature AD-Domain-Services");
+                    writer.WriteLine("Import-Module ADDSDeployment");
+                    @writer.WriteLine(@"$Databasepath=" + "" + DatabasePath + "");
+                    @writer.WriteLine(@"$Logpath=" + "" + LogPath + "");
+                    @writer.WriteLine(@"$Sysvolpath=" + "" + Sysvolpath + "");
+                    @writer.WriteLine(@"$Domainname=" + "" + DomainName + "");
+                    @writer.WriteLine(@"$adminpassword =" + "" + safemodeadminpassword + "");
+                    @writer.WriteLine(@"Install-ADDSDomainController -DomainName ""$Domainname"" -ApplicationPartitionsToReplicate * -DatabasePath ""$Databasepath"" -CreateDnsDelegation:$false -Force -InstallDns -LogPath ""$Logpath""  -SysvolPath ""$Sysvolpath"" -safemodeadministratorpassword:$adminpassword");
                     writer.Close();
                     lbdownload.Visible = true;
                     returnResult = true;

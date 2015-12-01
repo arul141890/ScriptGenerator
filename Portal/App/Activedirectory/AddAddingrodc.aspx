@@ -13,39 +13,39 @@
         </p>
         <ul>
             <li><span class="label">Hostname:</span>
-                <asp:TextBox ID="txtHostname" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtHostname" ClientIDMode="Static" runat="server" MaxLength="20" ></asp:TextBox>
             </li>
             <li><span class="label">IP Address:</span>
-                <asp:TextBox ID="txtIpaddress" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtIpaddress" ClientIDMode="Static" runat="server" MaxLength="20"></asp:TextBox>
             </li>
-             <li><span class="label">Only Critical Replication:</span>
-                <asp:DropDownList ID="DDCriticalreplication" runat="server">
-                    <asp:ListItem Selected="True">--SELECT--</asp:ListItem>
-                    <asp:ListItem>True</asp:ListItem>
-                    <asp:ListItem>False</asp:ListItem>
-                </asp:DropDownList>
-            </li>
-            <li><span class="label">Allow Password Replication AccountName:</span>
-                <asp:TextBox ID="txtAllowpraccount" ClientIDMode="Static" runat="server"></asp:TextBox>
+             <li><span class="label">Allow Password Replication AccountName:</span>
+                <asp:TextBox ID="txtAllowpraccount" ClientIDMode="Static" runat="server" MaxLength="180"></asp:TextBox>
+                 <asp:Label ID="Label3" runat="server" Text="Label">Eg: ("Test\test group1", "Test\test admin group")</asp:Label>
             </li>
             <li><span class="label">Deny Password Replication AccountName:</span>
-                <asp:TextBox ID="txtdenypraccount" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtdenypraccount" ClientIDMode="Static" runat="server" MaxLength="180"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" Text="Label">Eg: ("Test\test group1", "Test\test admin group")</asp:Label>
             </li>
             <li><span class="label">Delegated Administrator Accountname:</span>
-                <asp:TextBox ID="txtDelegatedacc" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtDelegatedacc" ClientIDMode="Static" runat="server" MaxLength="180"></asp:TextBox>
+                <asp:Label ID="Label2" runat="server" Text="Label">Eg: ("Test\test group1", "Test\test admin group")</asp:Label>
             </li>
             <li><span class="label">Domain Name:</span>
-                <asp:TextBox ID="txtdomainname" ClientIDMode="Static" runat="server"></asp:TextBox>
-            </li>
-            <li><span class="label">Install DNS:</span>
-                <asp:DropDownList ID="DDInstallDNS" runat="server">
-                    <asp:ListItem Selected="True">--SELECT--</asp:ListItem>
-                    <asp:ListItem>True</asp:ListItem>
-                    <asp:ListItem>False</asp:ListItem>
-                </asp:DropDownList>
+                <asp:TextBox ID="txtdomainname" ClientIDMode="Static" runat="server" MaxLength="25"></asp:TextBox>
             </li>
             <li><span class="label">Site Name:</span>
-                <asp:TextBox ID="txtSitename" ClientIDMode="Static" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtSitename" ClientIDMode="Static" runat="server" MaxLength="40"></asp:TextBox>
+            </li>
+
+            <li><span class="label">DatabasePath:</span>
+                <asp:TextBox ID="txtdbpath" ClientIDMode="Static" runat="server" MaxLength="90">C:\Windows\NTDS</asp:TextBox>
+            </li>
+            <li><span class="label">LogPath:</span>
+                <asp:TextBox ID="txtlogpath" ClientIDMode="Static" runat="server" MaxLength="90">C:\Windows\NTDS</asp:TextBox>
+            </li>
+            
+            <li><span class="label">SysvolPath:</span>
+                <asp:TextBox ID="txtsysvol" ClientIDMode="Static" runat="server" MaxLength="90">C:\Windows\SYSVOL</asp:TextBox>
             </li>
 
         </ul>

@@ -6,19 +6,20 @@
 
         public string Ipaddress { get; set; }
 
-        public string AllowpasswordreplicationaccountName { get; set; }
+        public string Allowreplicationaccount { get; set; }
 
-        public string CriticalReplicationOnly { get; set; }
+        public string Delegatedadminiaccount { get; set; }
 
-        public string Delegatedadministratoraccountname { get; set; }
-
-        public string Denypasswordreplicationaccountname { get; set; }
+        public string Denyreplicationaccount { get; set; }
 
         public string DomainName { get; set; }
 
-        public string InstallDNS { get; set; }
-
         public string SiteName { get; set; }
 
-     }
+        public string Logpath { get; set; }
+
+        public string Sysvolpath { get; set; }
+
+        public string Databasepath { get; set; }
+    }
 }
