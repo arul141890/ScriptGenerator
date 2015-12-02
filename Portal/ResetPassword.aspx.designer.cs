@@ -8,9 +8,10 @@
 //------------------------------------------------------------------------------
 
 namespace Portal {
-    
-    
-    public partial class Changepassword {
+
+
+    public partial class ResetPassword
+    {
         
         /// <summary>
         /// Head1 control.

@@ -13,7 +13,7 @@ using System.IO;
 using System.Configuration;
 namespace Portal
 {
-    public partial class Changepassword : BasePage
+    public partial class ResetPassword : BasePage
     {
 
         [SetterProperty]

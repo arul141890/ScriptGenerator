@@ -16,7 +16,7 @@ namespace Portal
     public partial class Register : BasePage
     {
         [SetterProperty]
-        public IRegisterService Registerservice { get; set; }
+        public IUserService UserService { get; set; }
 
 
         protected void BtnLogin(object sender, EventArgs e)
@@ -81,7 +81,7 @@ namespace Portal
                     UserId=Userid
                 };
 
-                Registerservice.Create(clientUser);
+                UserService.Create(clientUser);
                 ShowSuccessMessage("User Account Created");
 
                 txtemail.Text = string.Empty;
@@ -110,9 +110,6 @@ namespace Portal
         {
             this.HideLabels();
         }
-
-
-
     }     
         
 }

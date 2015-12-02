@@ -80,6 +80,7 @@
     <Compile Include="Serializer.cs" />
     <Compile Include="UrlHelper.cs" />
     <Compile Include="FileExtensions.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="WebServices\RestClient.cs" />
   </ItemGroup>
   <ItemGroup>
