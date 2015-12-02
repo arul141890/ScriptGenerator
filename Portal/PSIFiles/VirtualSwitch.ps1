@@ -1,13 +1,15 @@
 <# 
-PowerShell script to create multiple A records creation
-CSV file name should contain the complete path to the CSV file
+PowerShell script to create virtual switch
 Execute the below command if powershell script execution is disabled
 set-executionpolicy unrestricted
 #>
-$Hostname=test
-<# Enter the remote session of the server#>
-New-PSSession –Name DNSrecord –ComputerName $Hostname
-Enter-PSSession –Name DNSrecord
+Import-Module ServerManager
+Import-Module Hyper-V
+$switchname=ewr
+$physicaladapter=rwet
+$allowmos=False
+New-VMSwitch -Name $switchname -NetAdapterNAme $physicaladapter -AllowMAnagementOS $allowmos
+PSSession –Name DNSrecord
 Import-Module ServerManager
 Import-Module DNSShell
 $Zonename=testzone

@@ -51,7 +51,7 @@ namespace Portal.App.Webserver
 
             if (HttpContext.Current.User.Identity.Name != "admin")
             {
-                User clientUser = this.ClientUserService.Retrieve(HttpContext.Current.User.Identity.Name);
+                User clientUser = this.ClientUserService.GetUserByUserName(HttpContext.Current.User.Identity.Name);
                 if (clientUser != null)
                 {
                     filterExpressions.Add(string.Format("CreatedBy=\"{0}\"", clientUser.UserId));

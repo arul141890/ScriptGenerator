@@ -7,12 +7,15 @@ using Core.Domain.Hyperv;
 using Portal.App.Common;
 using Portal.App.DataSources;
 using Sevices.Users;
+using StructureMap.Attributes;
 
 namespace Portal.App.HyperV
 {
     public partial class VirtualSwitchCreations : BasePage
     {
+        [SetterProperty]
         public IUserService ClientUserService { get; set; }
+
         protected void Page_Init(object sender, EventArgs e)
         {
             this.dsData.TypeName = typeof(VirtualSwitchCreationDataSource).FullName;
@@ -51,7 +54,7 @@ namespace Portal.App.HyperV
 
             if (HttpContext.Current.User.Identity.Name != "admin")
             {
-                User clientUser = this.ClientUserService.Retrieve(HttpContext.Current.User.Identity.Name);
+                var clientUser = this.ClientUserService.GetUserByUserName(HttpContext.Current.User.Identity.Name);
                 if (clientUser != null)
                 {
                     filterExpressions.Add(string.Format("CreatedBy=\"{0}\"", clientUser.UserId));

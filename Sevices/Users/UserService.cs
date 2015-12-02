@@ -24,5 +24,10 @@ namespace Sevices
 
             return user != null && user.PasswordHash == md5;
         }
+
+        public User GetUserByUserName(string userId)
+        {
+            return Uow.Users.FirstOrDefault(x => x.UserId == userId);            
+        }
     }
 }

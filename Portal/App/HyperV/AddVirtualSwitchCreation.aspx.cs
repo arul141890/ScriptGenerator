@@ -23,7 +23,7 @@ namespace Portal.App.HyperV
         {
             this.HideLabels();
             var switchName = txtSwitchName.Text.Trim();
-            var adapter = xtAdapter.Text.Trim();
+            var adapter = txtAdapter.Text.Trim();
             var allowManagementOs = DDAllowManagementOs.SelectedItem.Text;
             
             // Switch Name validation
